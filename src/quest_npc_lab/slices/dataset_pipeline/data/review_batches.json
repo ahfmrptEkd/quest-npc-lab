@@ -1,0 +1,55 @@
+{
+  "dataset": "pilot_60.jsonl",
+  "dataset_sha256": "017d354c26a3c3c965243f06000f8d1891ee1cee5216ae83be9b2a4e0db8030c",
+  "batch_size": 20,
+  "batches": [
+    {
+      "batch_id": "batch_01",
+      "line_start": 1,
+      "line_end": 20,
+      "generation_validation": {
+        "status": "passed"
+      },
+      "ai_review": {
+        "status": "approved",
+        "issues": []
+      },
+      "user_review": {
+        "status": "approved",
+        "duration_seconds": 120
+      }
+    },
+    {
+      "batch_id": "batch_02",
+      "line_start": 21,
+      "line_end": 40,
+      "generation_validation": {
+        "status": "passed"
+      },
+      "ai_review": {
+        "status": "approved",
+        "issues": []
+      },
+      "user_review": {
+        "status": "approved",
+        "duration_seconds": 120
+      }
+    },
+    {
+      "batch_id": "batch_03",
+      "line_start": 41,
+      "line_end": 60,
+      "generation_validation": {
+        "status": "passed"
+      },
+      "ai_review": {
+        "status": "approved",
+        "issues": []
+      },
+      "user_review": {
+        "status": "approved",
+        "duration_seconds": 120
+      }
+    }
+  ]
+}

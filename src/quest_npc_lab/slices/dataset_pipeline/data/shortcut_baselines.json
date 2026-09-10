@@ -1,0 +1,64 @@
+{
+  "dataset": "pilot_60.jsonl",
+  "dataset_sha256": "017d354c26a3c3c965243f06000f8d1891ee1cee5216ae83be9b2a4e0db8030c",
+  "all_shortcuts_fail": true,
+  "policies": {
+    "always_grant": {
+      "correct": 10,
+      "total": 60,
+      "accuracy": 0.16666666666666666
+    },
+    "always_reject": {
+      "correct": 10,
+      "total": 60,
+      "accuracy": 0.16666666666666666
+    },
+    "always_other": {
+      "correct": 10,
+      "total": 60,
+      "accuracy": 0.16666666666666666
+    },
+    "always_clarify": {
+      "correct": 10,
+      "total": 60,
+      "accuracy": 0.16666666666666666
+    },
+    "grant_on_state_alone": {
+      "correct": 20,
+      "total": 60,
+      "accuracy": 0.3333333333333333
+    }
+  },
+  "required_patterns": {
+    "always_reject": {
+      "correct": 8,
+      "total": 14,
+      "accuracy": 0.5714285714285714
+    },
+    "state_only_grant": {
+      "correct": 3,
+      "total": 10,
+      "accuracy": 0.3
+    },
+    "accept_false_claim": {
+      "correct": 2,
+      "total": 7,
+      "accuracy": 0.2857142857142857
+    },
+    "duplicate_grant": {
+      "correct": 1,
+      "total": 11,
+      "accuracy": 0.09090909090909091
+    },
+    "abuse_other_clarify": {
+      "correct": 10,
+      "total": 20,
+      "accuracy": 0.5
+    },
+    "ignore_cancel": {
+      "correct": 2,
+      "total": 8,
+      "accuracy": 0.25
+    }
+  }
+}
