@@ -15,11 +15,22 @@ scope and approval gates. Research proposals do not override those decisions.
   Example: `doc(agents): configure repository skill conventions`.
   Use types such as `feat`, `fix`, `doc`, `refactor`, `test`, and `chore`;
   category names the affected area.
-- A PR is not required for every change. When creating one, use exactly
-  `## Why`, `## What changed`, and `## Testing` as its body sections.
-  Report actual checks and results, including checks not run.
+- Implementation tickets use short-lived branches and PRs. Narrow maintenance
+  does not require a PR for every change. PR bodies use exactly `## Why`,
+  `## What changed`, and `## Testing` as their sections. Report actual checks
+  and results, including checks not run.
 
 ## Agent skills
+
+### Engineering flow
+
+Use `/ask-matt` to select the applicable skill flow. The project's main route
+is `/grill-with-docs` → `/to-spec` → `/to-tickets` → `/implement`, with `/tdd`
+and `/code-review`, followed by PR checks and review feedback. Keep detailed
+procedures in the selected skills.
+
+If `docs/agents/workflow.md` exists, read it for local delegation preferences;
+otherwise continue with the public rules above.
 
 ### Issue tracker
 

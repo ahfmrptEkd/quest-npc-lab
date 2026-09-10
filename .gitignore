@@ -11,6 +11,7 @@ wheels/
 
 # Local-only notes and agent files
 /docs/report-*.md
+/docs/agents/workflow.md
 .pi/
 
 # Secrets
