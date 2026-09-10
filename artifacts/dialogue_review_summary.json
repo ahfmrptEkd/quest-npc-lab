@@ -1,0 +1,23 @@
+{
+  "consistency": {
+    "defer": 0,
+    "pass": 0,
+    "pending": 24,
+    "problem": 0,
+    "unassessable": 24
+  },
+  "responsiveness": {
+    "defer": 0,
+    "pass": 0,
+    "pending": 24,
+    "problem": 0,
+    "unassessable": 24
+  },
+  "tone_naturalness": {
+    "defer": 0,
+    "pass": 0,
+    "pending": 24,
+    "problem": 0,
+    "unassessable": 24
+  }
+}

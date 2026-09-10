@@ -1,0 +1,102 @@
+{
+  "human_review": "pending",
+  "provenance": {
+    "checkpoint_selection": "user-supplied fixed checkpoints; no final-evaluation selection",
+    "checkpoints": {
+      "grpo": {
+        "adapter_parameter_sha256": "f1491ae0ef49d349fef39bc6eafd6fb90db875d259781651000d2c9fdc9be5ed",
+        "checkpoint_files": {
+          "adapter_config.json": "2b4293c149e090ab6e396b8129dd8f0052986a97d923a80820991aac4ca2de71",
+          "adapter_model.safetensors": "984d4c4daa397d01beeccc9ab4070f7b553e9433a08279b6147a20d69db6295f"
+        },
+        "evaluation_generation": {
+          "do_sample": false,
+          "max_new_tokens": 128,
+          "temperature": 0.0
+        },
+        "hyperparameters": {
+          "epochs": 1,
+          "epsilon": 0.0001,
+          "group_size": 4,
+          "learning_rate": 1e-05,
+          "max_training_seconds": 1800,
+          "seed": 42,
+          "temperature": 1.0
+        },
+        "provenance": {
+          "case_count": 180,
+          "checkpoint_selection": "final training group only; no evaluation or seed selection",
+          "dataset": "train_180.jsonl",
+          "dataset_sha256": "cfae43585260384bfd84276bda0f4e5af718e02820386968060eab988d9dd833",
+          "final_evaluation_used": false,
+          "initial_adapter_parameter_sha256": "1a799be25009fff1350e8d770da4a40c697d007445449a6f56090d68b74abe8c",
+          "initial_checkpoint": "sft_checkpoint",
+          "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+          "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+          "prompt_sha256": "15d28c1279460ce9f2b46e1993e9b8501ff136380b082dddb73f0b6a9e2119a6",
+          "prompt_version": "receptionist-improved-v1",
+          "review_sha256": "3babf8c9f8b60f3a8dcdeeb28842fe03a23a7911e530005a76ec82edc59ea277",
+          "validation_used": false
+        }
+      },
+      "sft": {
+        "adapter_parameter_sha256": "1a799be25009fff1350e8d770da4a40c697d007445449a6f56090d68b74abe8c",
+        "checkpoint_files": {
+          "adapter_config.json": "d16d75e0bc37fed47ae3e17d089b068a699406a65dd443d48fd2f2a684e96de9",
+          "adapter_model.safetensors": "227c0e2089634597d488b2afdccaa517a23e50b0dcebb8e7cb8caa2f40a2e898"
+        },
+        "hyperparameters": {
+          "batch_size": 4,
+          "epochs": 3,
+          "learning_rate": 0.0001,
+          "lora_alpha": 16,
+          "lora_r": 8,
+          "max_training_seconds": 900,
+          "seed": 42,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ]
+        },
+        "provenance": {
+          "case_count": 180,
+          "checkpoint_selection": "final epoch only; no evaluation or seed selection",
+          "dataset": "train_180.jsonl",
+          "dataset_sha256": "cfae43585260384bfd84276bda0f4e5af718e02820386968060eab988d9dd833",
+          "initial_checkpoint": "original_base_model",
+          "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+          "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+          "prompt_sha256": "15d28c1279460ce9f2b46e1993e9b8501ff136380b082dddb73f0b6a9e2119a6",
+          "prompt_version": "receptionist-improved-v1",
+          "review_sha256": "3babf8c9f8b60f3a8dcdeeb28842fe03a23a7911e530005a76ec82edc59ea277",
+          "validation_used": false
+        }
+      }
+    },
+    "dataset_sha256": "956bfe8616042a86edc41b2976d0900478c4c6e78faa50f9144007485d496bd9",
+    "environment": {
+      "batch_size": 1,
+      "device": "cuda",
+      "dtype": "float32",
+      "gpu": "NVIDIA GeForce RTX 3060",
+      "libraries": {
+        "peft": "0.20.0",
+        "torch": "2.14.0",
+        "transformers": "5.16.1"
+      },
+      "python": "3.12.10",
+      "torch_num_threads": 1
+    },
+    "minimal_rules_sha256": "d0b82bd296d7b65e7c87cd9f5a154ba3db0d8b0351714ce3e2245cbacaf5fb6c",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "prompt_manifest_sha256": "15d28c1279460ce9f2b46e1993e9b8501ff136380b082dddb73f0b6a9e2119a6",
+    "provenance_warnings": [
+      "Supplied SFT matches current checkpoint metadata and GRPO parent, but differs from the historical SFT training report. Historical SFT update/reload evidence does not verify this adapter."
+    ],
+    "retries": 0
+  },
+  "response_count": 240,
+  "seconds": 1111.6283965210023,
+  "status": "completed"
+}
