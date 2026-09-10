@@ -1,0 +1,36 @@
+{
+  "provenance": {
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "prompt_version": "receptionist-improved-v1",
+    "prompt_sha256": "15d28c1279460ce9f2b46e1993e9b8501ff136380b082dddb73f0b6a9e2119a6",
+    "dataset": "train_180.jsonl",
+    "dataset_sha256": "cfae43585260384bfd84276bda0f4e5af718e02820386968060eab988d9dd833",
+    "review_sha256": "3babf8c9f8b60f3a8dcdeeb28842fe03a23a7911e530005a76ec82edc59ea277",
+    "case_count": 180,
+    "initial_checkpoint": "sft_checkpoint",
+    "validation_used": false,
+    "checkpoint_selection": "final training group only; no evaluation or seed selection",
+    "initial_adapter_parameter_sha256": "1a799be25009fff1350e8d770da4a40c697d007445449a6f56090d68b74abe8c",
+    "final_evaluation_used": false
+  },
+  "hyperparameters": {
+    "group_size": 4,
+    "seed": 42,
+    "epochs": 1,
+    "learning_rate": 1e-05,
+    "epsilon": 0.0001,
+    "temperature": 1.0,
+    "max_training_seconds": 1800
+  },
+  "adapter_parameter_sha256": "f1491ae0ef49d349fef39bc6eafd6fb90db875d259781651000d2c9fdc9be5ed",
+  "checkpoint_files": {
+    "adapter_config.json": "2b4293c149e090ab6e396b8129dd8f0052986a97d923a80820991aac4ca2de71",
+    "adapter_model.safetensors": "984d4c4daa397d01beeccc9ab4070f7b553e9433a08279b6147a20d69db6295f"
+  },
+  "evaluation_generation": {
+    "max_new_tokens": 128,
+    "do_sample": false,
+    "temperature": 0.0
+  }
+}
