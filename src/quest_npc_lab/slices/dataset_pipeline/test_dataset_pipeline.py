@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import replace
 import json
 
 import pytest
@@ -359,10 +360,12 @@ def test_shipped_pilot_has_60_balanced_ai_reviewed_cases_and_all_shortcut_tags()
         "ignore_cancel",
     }
     assert {case.split for case in cases} == {"train_pilot"}
-    assert {case.review_status for case in cases} == {"ai_approved"}
+    assert {case.review_status for case in cases} == {"user_approved"}
     assert all(score.accuracy < 1.0 for score in evaluate_shortcut_baselines(cases).values())
+    assert len(prepare_training_cases(cases)) == 60
+    unapproved = [replace(c, review_status="ai_approved") for c in cases]
     with pytest.raises(DatasetValidationError, match="user approval"):
-        prepare_training_cases(cases)
+        prepare_training_cases(unapproved)
 
 
 def test_all_six_required_shortcut_patterns_have_failing_counterexamples() -> None:
@@ -396,7 +399,8 @@ def test_review_manifest_partitions_pilot_into_three_mixed_batches() -> None:
         assert end - start + 1 == 20
         assert batch["generation_validation"]["status"] == "passed"
         assert batch["ai_review"] == {"status": "approved", "issues": []}
-        assert batch["user_review"]["status"] == "pending"
+        assert batch["user_review"]["status"] == "approved"
+        assert batch["user_review"]["duration_seconds"] == 120
         batch_actions = {case.ground_truth_action for case in cases[start - 1 : end]}
         assert batch_actions == set(ActionType)
     assert covered_lines == list(range(1, 61))
