@@ -1,0 +1,3404 @@
+{
+  "analysis": {
+    "causal_hypotheses": [],
+    "dialogue_contradictions": "Pending human review; not automatically judged.",
+    "observations": "All action and format failures are listed per condition, including shortcut tags."
+  },
+  "case_count": 60,
+  "conditions": {
+    "base_improved": {
+      "accuracy": 0.0,
+      "by_action": {
+        "already_claimed": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 10,
+          "format_error_rate": 1.0,
+          "format_errors": 10,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "clarify": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 10,
+          "format_error_rate": 1.0,
+          "format_errors": 10,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "explain_progress": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 10,
+          "format_error_rate": 1.0,
+          "format_errors": 10,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "explain_reward": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 10,
+          "format_error_rate": 1.0,
+          "format_errors": 10,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "grant_reward": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 10,
+          "format_error_rate": 1.0,
+          "format_errors": 10,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "other": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 10,
+          "format_error_rate": 1.0,
+          "format_errors": 10,
+          "other_denominator": 0,
+          "other_misclassification_rate": null,
+          "other_misclassifications": 0
+        }
+      },
+      "by_shortcut": {
+        "abuse_other_clarify": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 38,
+          "format_error_rate": 1.0,
+          "format_errors": 38,
+          "other_denominator": 28,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "accept_false_claim": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 2,
+          "format_error_rate": 1.0,
+          "format_errors": 2,
+          "other_denominator": 2,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "always_reject": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 11,
+          "format_error_rate": 1.0,
+          "format_errors": 11,
+          "other_denominator": 11,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "duplicate_grant": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 10,
+          "format_error_rate": 1.0,
+          "format_errors": 10,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "ignore_cancel": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 7,
+          "format_error_rate": 1.0,
+          "format_errors": 7,
+          "other_denominator": 7,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "state_only_grant": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 21,
+          "format_error_rate": 1.0,
+          "format_errors": 21,
+          "other_denominator": 15,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        }
+      },
+      "correct": 0,
+      "count": 60,
+      "failures": [
+        {
+          "case_id": "eval-001",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-002",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "accept_false_claim"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-003",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-004",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-005",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-006",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-007",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-008",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-009",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-010",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-011",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-012",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-013",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-014",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-015",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-016",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-017",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-018",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-019",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-020",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-021",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-022",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-023",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-024",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-025",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-026",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-027",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-028",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-029",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-030",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-031",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-032",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "accept_false_claim"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-033",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-034",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-035",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-036",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-037",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-038",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-039",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-040",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-041",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-042",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-043",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-044",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-045",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-046",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-047",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-048",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-049",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-050",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-051",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-052",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-053",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-054",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-055",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-056",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-057",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-058",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-059",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-060",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        }
+      ],
+      "format_error_rate": 1.0,
+      "format_errors": 60,
+      "other_denominator": 50,
+      "other_misclassification_rate": 0.0,
+      "other_misclassifications": 0
+    },
+    "base_minimal": {
+      "accuracy": 0.0,
+      "by_action": {
+        "already_claimed": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 10,
+          "format_error_rate": 1.0,
+          "format_errors": 10,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "clarify": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 10,
+          "format_error_rate": 1.0,
+          "format_errors": 10,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "explain_progress": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 10,
+          "format_error_rate": 1.0,
+          "format_errors": 10,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "explain_reward": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 10,
+          "format_error_rate": 1.0,
+          "format_errors": 10,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "grant_reward": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 10,
+          "format_error_rate": 1.0,
+          "format_errors": 10,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "other": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 10,
+          "format_error_rate": 1.0,
+          "format_errors": 10,
+          "other_denominator": 0,
+          "other_misclassification_rate": null,
+          "other_misclassifications": 0
+        }
+      },
+      "by_shortcut": {
+        "abuse_other_clarify": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 38,
+          "format_error_rate": 1.0,
+          "format_errors": 38,
+          "other_denominator": 28,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "accept_false_claim": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 2,
+          "format_error_rate": 1.0,
+          "format_errors": 2,
+          "other_denominator": 2,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "always_reject": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 11,
+          "format_error_rate": 1.0,
+          "format_errors": 11,
+          "other_denominator": 11,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "duplicate_grant": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 10,
+          "format_error_rate": 1.0,
+          "format_errors": 10,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "ignore_cancel": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 7,
+          "format_error_rate": 1.0,
+          "format_errors": 7,
+          "other_denominator": 7,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "state_only_grant": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 21,
+          "format_error_rate": 1.0,
+          "format_errors": 21,
+          "other_denominator": 15,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        }
+      },
+      "correct": 0,
+      "count": 60,
+      "failures": [
+        {
+          "case_id": "eval-001",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-002",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "accept_false_claim"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-003",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-004",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-005",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-006",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-007",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-008",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-009",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-010",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-011",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-012",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-013",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-014",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-015",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-016",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-017",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-018",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-019",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-020",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-021",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-022",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-023",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-024",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-025",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-026",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-027",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-028",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-029",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-030",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-031",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-032",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "accept_false_claim"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-033",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-034",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-035",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-036",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-037",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-038",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-039",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-040",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-041",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-042",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-043",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-044",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-045",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-046",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-047",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-048",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-049",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-050",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-051",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-052",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-053",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-054",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-055",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": null,
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-056",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-057",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-058",
+          "error": {
+            "reason": "markdown code fences are not allowed",
+            "stage": "model_output"
+          },
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-059",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-060",
+          "error": {
+            "reason": "model output must be valid JSON: Expecting value",
+            "stage": "model_output"
+          },
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": null,
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        }
+      ],
+      "format_error_rate": 1.0,
+      "format_errors": 60,
+      "other_denominator": 50,
+      "other_misclassification_rate": 0.0,
+      "other_misclassifications": 0
+    },
+    "grpo_improved": {
+      "accuracy": 0.31666666666666665,
+      "by_action": {
+        "already_claimed": {
+          "accuracy": 0.1,
+          "correct": 1,
+          "count": 10,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "clarify": {
+          "accuracy": 0.5,
+          "correct": 5,
+          "count": 10,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "explain_progress": {
+          "accuracy": 0.1,
+          "correct": 1,
+          "count": 10,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "explain_reward": {
+          "accuracy": 0.3,
+          "correct": 3,
+          "count": 10,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "grant_reward": {
+          "accuracy": 0.7,
+          "correct": 7,
+          "count": 10,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "other": {
+          "accuracy": 0.2,
+          "correct": 2,
+          "count": 10,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 0,
+          "other_misclassification_rate": null,
+          "other_misclassifications": 0
+        }
+      },
+      "by_shortcut": {
+        "abuse_other_clarify": {
+          "accuracy": 0.42105263157894735,
+          "correct": 16,
+          "count": 38,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 28,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "accept_false_claim": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 2,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 2,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "always_reject": {
+          "accuracy": 0.6363636363636364,
+          "correct": 7,
+          "count": 11,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 11,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "duplicate_grant": {
+          "accuracy": 0.1,
+          "correct": 1,
+          "count": 10,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "ignore_cancel": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 7,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 7,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "state_only_grant": {
+          "accuracy": 0.23809523809523808,
+          "correct": 5,
+          "count": 21,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 15,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        }
+      },
+      "correct": 19,
+      "count": 60,
+      "failures": [
+        {
+          "case_id": "eval-002",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "accept_false_claim"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-004",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-008",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-009",
+          "error": null,
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-010",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-011",
+          "error": null,
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-012",
+          "error": null,
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-013",
+          "error": null,
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": "already_claimed",
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-014",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "already_claimed",
+          "shortcut_tags": [
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-015",
+          "error": null,
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-016",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-017",
+          "error": null,
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-018",
+          "error": null,
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": "already_claimed",
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-019",
+          "error": null,
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": "explain_progress",
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-020",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "always_reject"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-022",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-023",
+          "error": null,
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-024",
+          "error": null,
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-026",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-028",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-030",
+          "error": null,
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-032",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "accept_false_claim"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-033",
+          "error": null,
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-034",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-036",
+          "error": null,
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-037",
+          "error": null,
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-038",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-039",
+          "error": null,
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-040",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-042",
+          "error": null,
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-044",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-045",
+          "error": null,
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-047",
+          "error": null,
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-048",
+          "error": null,
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-051",
+          "error": null,
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-052",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-056",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-057",
+          "error": null,
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-058",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-059",
+          "error": null,
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-060",
+          "error": null,
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        }
+      ],
+      "format_error_rate": 0.0,
+      "format_errors": 0,
+      "other_denominator": 50,
+      "other_misclassification_rate": 0.0,
+      "other_misclassifications": 0
+    },
+    "sft_improved": {
+      "accuracy": 0.26666666666666666,
+      "by_action": {
+        "already_claimed": {
+          "accuracy": 0.1,
+          "correct": 1,
+          "count": 10,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "clarify": {
+          "accuracy": 0.3,
+          "correct": 3,
+          "count": 10,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.2,
+          "other_misclassifications": 2
+        },
+        "explain_progress": {
+          "accuracy": 0.1,
+          "correct": 1,
+          "count": 10,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "explain_reward": {
+          "accuracy": 0.6,
+          "correct": 6,
+          "count": 10,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "grant_reward": {
+          "accuracy": 0.3,
+          "correct": 3,
+          "count": 10,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "other": {
+          "accuracy": 0.2,
+          "correct": 2,
+          "count": 10,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 0,
+          "other_misclassification_rate": null,
+          "other_misclassifications": 0
+        }
+      },
+      "by_shortcut": {
+        "abuse_other_clarify": {
+          "accuracy": 0.2894736842105263,
+          "correct": 11,
+          "count": 38,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 28,
+          "other_misclassification_rate": 0.07142857142857142,
+          "other_misclassifications": 2
+        },
+        "accept_false_claim": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 2,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 2,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "always_reject": {
+          "accuracy": 0.2727272727272727,
+          "correct": 3,
+          "count": 11,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 11,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "duplicate_grant": {
+          "accuracy": 0.1,
+          "correct": 1,
+          "count": 10,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 10,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "ignore_cancel": {
+          "accuracy": 0.14285714285714285,
+          "correct": 1,
+          "count": 7,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 7,
+          "other_misclassification_rate": 0.0,
+          "other_misclassifications": 0
+        },
+        "state_only_grant": {
+          "accuracy": 0.23809523809523808,
+          "correct": 5,
+          "count": 21,
+          "format_error_rate": 0.0,
+          "format_errors": 0,
+          "other_denominator": 15,
+          "other_misclassification_rate": 0.06666666666666667,
+          "other_misclassifications": 1
+        }
+      },
+      "correct": 16,
+      "count": 60,
+      "failures": [
+        {
+          "case_id": "eval-001",
+          "error": null,
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-002",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "accept_false_claim"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-004",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-005",
+          "error": null,
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": "other",
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-007",
+          "error": null,
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-008",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-010",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-011",
+          "error": null,
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": "explain_progress",
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-012",
+          "error": null,
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-013",
+          "error": null,
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": "already_claimed",
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-014",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "already_claimed",
+          "shortcut_tags": [
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-016",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-017",
+          "error": null,
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-018",
+          "error": null,
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": "already_claimed",
+          "shortcut_tags": [
+            "abuse_other_clarify",
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-019",
+          "error": null,
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": "explain_progress",
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-020",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "always_reject"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-022",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-023",
+          "error": null,
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-024",
+          "error": null,
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-025",
+          "error": null,
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-026",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-028",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-030",
+          "error": null,
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-032",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "accept_false_claim"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-033",
+          "error": null,
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-034",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-036",
+          "error": null,
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-037",
+          "error": null,
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-038",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-040",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-042",
+          "error": null,
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-044",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-045",
+          "error": null,
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-047",
+          "error": null,
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-048",
+          "error": null,
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-049",
+          "error": null,
+          "expected": "grant_reward",
+          "missed_grant": true,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "always_reject",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-051",
+          "error": null,
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-052",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-053",
+          "error": null,
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": "other",
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-056",
+          "error": null,
+          "expected": "explain_progress",
+          "missed_grant": false,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "state_only_grant",
+            "ignore_cancel"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-057",
+          "error": null,
+          "expected": "explain_reward",
+          "missed_grant": false,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "state_only_grant"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-058",
+          "error": null,
+          "expected": "already_claimed",
+          "missed_grant": false,
+          "model_action": "grant_reward",
+          "shortcut_tags": [
+            "duplicate_grant"
+          ],
+          "wrong_grant": true
+        },
+        {
+          "case_id": "eval-059",
+          "error": null,
+          "expected": "clarify",
+          "missed_grant": false,
+          "model_action": "explain_reward",
+          "shortcut_tags": [
+            "state_only_grant",
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        },
+        {
+          "case_id": "eval-060",
+          "error": null,
+          "expected": "other",
+          "missed_grant": false,
+          "model_action": "clarify",
+          "shortcut_tags": [
+            "abuse_other_clarify"
+          ],
+          "wrong_grant": false
+        }
+      ],
+      "format_error_rate": 0.0,
+      "format_errors": 0,
+      "other_denominator": 50,
+      "other_misclassification_rate": 0.04,
+      "other_misclassifications": 2
+    }
+  },
+  "dataset_sha256": "956bfe8616042a86edc41b2976d0900478c4c6e78faa50f9144007485d496bd9",
+  "deltas": {
+    "grpo": {
+      "accuracy_delta": 0.04999999999999999,
+      "from": "sft_improved",
+      "outcome": "improvement",
+      "percentage_point_delta": 4.999999999999999,
+      "relative_accuracy_delta": 0.18749999999999997,
+      "to": "grpo_improved"
+    },
+    "prompt": {
+      "accuracy_delta": 0.0,
+      "from": "base_minimal",
+      "outcome": "tie",
+      "percentage_point_delta": 0.0,
+      "relative_accuracy_delta": null,
+      "to": "base_improved"
+    },
+    "sft": {
+      "accuracy_delta": 0.26666666666666666,
+      "from": "base_improved",
+      "outcome": "improvement",
+      "percentage_point_delta": 26.666666666666668,
+      "relative_accuracy_delta": null,
+      "to": "sft_improved"
+    }
+  },
+  "generation": {
+    "do_sample": false,
+    "max_new_tokens": 128,
+    "temperature": 0.0
+  },
+  "limitations": [
+    "Single seed; 60 balanced cases; exploratory comparison.",
+    "Dialogue quality requires one human reviewer; accuracy does not establish dialogue quality.",
+    "Environment differences may affect greedy outputs."
+  ],
+  "na_representation": "null means N/A (zero denominator)",
+  "provenance": {
+    "checkpoint_selection": "user-supplied fixed checkpoints; no final-evaluation selection",
+    "checkpoints": {
+      "grpo": {
+        "adapter_parameter_sha256": "f1491ae0ef49d349fef39bc6eafd6fb90db875d259781651000d2c9fdc9be5ed",
+        "checkpoint_files": {
+          "adapter_config.json": "2b4293c149e090ab6e396b8129dd8f0052986a97d923a80820991aac4ca2de71",
+          "adapter_model.safetensors": "984d4c4daa397d01beeccc9ab4070f7b553e9433a08279b6147a20d69db6295f"
+        },
+        "evaluation_generation": {
+          "do_sample": false,
+          "max_new_tokens": 128,
+          "temperature": 0.0
+        },
+        "hyperparameters": {
+          "epochs": 1,
+          "epsilon": 0.0001,
+          "group_size": 4,
+          "learning_rate": 1e-05,
+          "max_training_seconds": 1800,
+          "seed": 42,
+          "temperature": 1.0
+        },
+        "provenance": {
+          "case_count": 180,
+          "checkpoint_selection": "final training group only; no evaluation or seed selection",
+          "dataset": "train_180.jsonl",
+          "dataset_sha256": "cfae43585260384bfd84276bda0f4e5af718e02820386968060eab988d9dd833",
+          "final_evaluation_used": false,
+          "initial_adapter_parameter_sha256": "1a799be25009fff1350e8d770da4a40c697d007445449a6f56090d68b74abe8c",
+          "initial_checkpoint": "sft_checkpoint",
+          "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+          "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+          "prompt_sha256": "15d28c1279460ce9f2b46e1993e9b8501ff136380b082dddb73f0b6a9e2119a6",
+          "prompt_version": "receptionist-improved-v1",
+          "review_sha256": "3babf8c9f8b60f3a8dcdeeb28842fe03a23a7911e530005a76ec82edc59ea277",
+          "validation_used": false
+        }
+      },
+      "sft": {
+        "adapter_parameter_sha256": "1a799be25009fff1350e8d770da4a40c697d007445449a6f56090d68b74abe8c",
+        "checkpoint_files": {
+          "adapter_config.json": "d16d75e0bc37fed47ae3e17d089b068a699406a65dd443d48fd2f2a684e96de9",
+          "adapter_model.safetensors": "227c0e2089634597d488b2afdccaa517a23e50b0dcebb8e7cb8caa2f40a2e898"
+        },
+        "hyperparameters": {
+          "batch_size": 4,
+          "epochs": 3,
+          "learning_rate": 0.0001,
+          "lora_alpha": 16,
+          "lora_r": 8,
+          "max_training_seconds": 900,
+          "seed": 42,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ]
+        },
+        "provenance": {
+          "case_count": 180,
+          "checkpoint_selection": "final epoch only; no evaluation or seed selection",
+          "dataset": "train_180.jsonl",
+          "dataset_sha256": "cfae43585260384bfd84276bda0f4e5af718e02820386968060eab988d9dd833",
+          "initial_checkpoint": "original_base_model",
+          "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+          "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+          "prompt_sha256": "15d28c1279460ce9f2b46e1993e9b8501ff136380b082dddb73f0b6a9e2119a6",
+          "prompt_version": "receptionist-improved-v1",
+          "review_sha256": "3babf8c9f8b60f3a8dcdeeb28842fe03a23a7911e530005a76ec82edc59ea277",
+          "validation_used": false
+        }
+      }
+    },
+    "dataset_sha256": "956bfe8616042a86edc41b2976d0900478c4c6e78faa50f9144007485d496bd9",
+    "environment": {
+      "batch_size": 1,
+      "device": "cuda",
+      "dtype": "float32",
+      "gpu": "NVIDIA GeForce RTX 3060",
+      "libraries": {
+        "peft": "0.20.0",
+        "torch": "2.14.0",
+        "transformers": "5.16.1"
+      },
+      "python": "3.12.10",
+      "torch_num_threads": 1
+    },
+    "minimal_rules_sha256": "d0b82bd296d7b65e7c87cd9f5a154ba3db0d8b0351714ce3e2245cbacaf5fb6c",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "prompt_manifest_sha256": "15d28c1279460ce9f2b46e1993e9b8501ff136380b082dddb73f0b6a9e2119a6",
+    "provenance_warnings": [
+      "Supplied SFT matches current checkpoint metadata and GRPO parent, but differs from the historical SFT training report. Historical SFT update/reload evidence does not verify this adapter."
+    ],
+    "retries": 0
+  },
+  "raw_responses_sha256": "6eed0d3ae7f36ed762c371e4491ad55b5afdb330d07c0cf3aa7e7fef1fd002f5",
+  "response_count": 240,
+  "seed": 42
+}

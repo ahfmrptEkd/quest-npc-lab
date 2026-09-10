@@ -42,3 +42,6 @@ wheels/
 # GRPO adapter weights stay local; provenance remains reviewable
 /artifacts/grpo_checkpoint/*
 !/artifacts/grpo_checkpoint/training_metadata.json
+
+# Keep condition identities hidden until the human dialogue review is complete
+/artifacts/**/.dialogue_review_48_key.json

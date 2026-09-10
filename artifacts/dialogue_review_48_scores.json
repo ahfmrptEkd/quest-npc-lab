@@ -1,0 +1,818 @@
+[
+  {
+    "review_id": "review-001",
+    "model": "Model A",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-002",
+    "model": "Model C",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-003",
+    "model": "Model C",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-004",
+    "model": "Model D",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-005",
+    "model": "Model D",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-006",
+    "model": "Model B",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-007",
+    "model": "Model B",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-008",
+    "model": "Model D",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-009",
+    "model": "Model D",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-010",
+    "model": "Model B",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-011",
+    "model": "Model A",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-012",
+    "model": "Model B",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-013",
+    "model": "Model A",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-014",
+    "model": "Model C",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-015",
+    "model": "Model D",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-016",
+    "model": "Model A",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-017",
+    "model": "Model A",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-018",
+    "model": "Model A",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-019",
+    "model": "Model C",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-020",
+    "model": "Model A",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-021",
+    "model": "Model B",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-022",
+    "model": "Model A",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-023",
+    "model": "Model C",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-024",
+    "model": "Model C",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-025",
+    "model": "Model D",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-026",
+    "model": "Model B",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-027",
+    "model": "Model A",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-028",
+    "model": "Model C",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-029",
+    "model": "Model D",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-030",
+    "model": "Model B",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-031",
+    "model": "Model C",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-032",
+    "model": "Model A",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-033",
+    "model": "Model A",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-034",
+    "model": "Model C",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-035",
+    "model": "Model A",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-036",
+    "model": "Model D",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-037",
+    "model": "Model C",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-038",
+    "model": "Model D",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-039",
+    "model": "Model B",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-040",
+    "model": "Model D",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-041",
+    "model": "Model C",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-042",
+    "model": "Model D",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-043",
+    "model": "Model D",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-044",
+    "model": "Model B",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-045",
+    "model": "Model B",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-046",
+    "model": "Model B",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-047",
+    "model": "Model C",
+    "assessable": true,
+    "consistency": {
+      "rating": "pending",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "pending",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "pending",
+      "note": ""
+    }
+  },
+  {
+    "review_id": "review-048",
+    "model": "Model B",
+    "assessable": false,
+    "consistency": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "responsiveness": {
+      "rating": "unassessable",
+      "note": ""
+    },
+    "tone_naturalness": {
+      "rating": "unassessable",
+      "note": ""
+    }
+  }
+]
