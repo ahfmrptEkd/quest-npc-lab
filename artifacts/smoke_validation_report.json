@@ -1,0 +1,336 @@
+{
+  "created_at": "2026-09-10T06:56:25+00:00",
+  "run_kind": "smoke",
+  "status": "blocked",
+  "blockers": [
+    "grpo: no relative reward signal (every candidate group had identical rewards)",
+    "grpo: parameters unchanged after policy update"
+  ],
+  "smoke_artifacts": {
+    "reusable_for_main_experiment": false,
+    "note": "artifacts/smoke/의 체크포인트·로그는 파이프라인 확인용이다. 본 SFT는 나중에 고정한 개선 프롬프트·실행 설정으로 원본 기반 모델에서 새로 시작하며 스모크 체크포인트를 본 결과로 재사용하지 않는다."
+  },
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "libraries": {
+      "torch": "2.14.0+cu130",
+      "transformers": "5.16.1",
+      "peft": "0.20.0",
+      "trl": "1.12.0",
+      "accelerate": "1.15.0",
+      "datasets": "5.0.1"
+    },
+    "device": "cuda",
+    "cuda_available": true,
+    "torch_cuda_version": "13.0",
+    "host_memory_total_gb": 7.73,
+    "disk_free_gb": 894.7,
+    "model": {
+      "name": "Qwen/Qwen2.5-0.5B-Instruct",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "license": "apache-2.0"
+    },
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 3060",
+      "total_vram_gb": 12.0,
+      "bf16_supported": true
+    }
+  },
+  "limits": {
+    "seed": 42,
+    "max_new_tokens": 128,
+    "sft_cases": 2,
+    "sft_steps": 1,
+    "sft_learning_rate": 0.0001,
+    "grpo_prompts": 2,
+    "num_generations": 4,
+    "grpo_steps": 1,
+    "grpo_learning_rate": 1e-05,
+    "grpo_temperature": 1.0,
+    "lora_r": 8,
+    "lora_alpha": 16,
+    "lora_target_modules": [
+      "q_proj",
+      "v_proj"
+    ],
+    "inference_decoding": "greedy (do_sample=False)",
+    "sft_case_ids": [
+      "pilot-001",
+      "pilot-002"
+    ],
+    "inference_case_id": "pilot-001",
+    "chat_template": "tokenizer default (Qwen2.5 system prompt), single user turn",
+    "stop_policy": "각 단계는 고정 스텝만 실행하고 재시도하지 않는다. 단계 실패는 차단 사유로 기록하며 SFT 어댑터가 없으면 GRPO를 건너뛴다."
+  },
+  "budget_estimate": {
+    "target_train_cases": 180,
+    "sft_seconds_per_epoch": 168.3,
+    "grpo_seconds_per_epoch": 1126.8,
+    "method": "1스텝 스모크 실측의 선형 외삽. 첫 스텝 워밍업이 포함되어 과대추정일 수 있고, 평가·재시도·에폭 수 결정은 포함하지 않는다."
+  },
+  "zerogpu_considerations": [
+    "ZeroGPU는 Gradio SDK Space만 지원하며 GPU 함수는 @spaces.GPU로 감싸고 모델은 모듈 로드 시 cuda에 올린다. 기본 실행 한도는 60초(duration으로 조정).",
+    "기본 large 크기는 RTX Pro 6000 Blackwell 절반(48GB VRAM)으로 0.5B 모델+LoRA 추론에는 충분하다.",
+    "문서상 지원 PyTorch는 2.8.0~2.13.0, Python은 3.12.12/3.10.13이다. 로컬 torch 2.14.0+cu130은 목록 밖이므로 Space 요구사항에서 지원 버전으로 고정하고 재검증한다.",
+    "torch.compile은 지원하지 않는다(AoT 컴파일만 가능).",
+    "무료 개인 계정은 인증된 이메일·가입 30일 이상 조건에서 ZeroGPU Space 2개까지 호스팅할 수 있다. 방문자 일일 할당량은 비로그인 2분·무료 계정 5분이다.",
+    "로컬 hf CLI는 로그인되어 있지 않아 계정 자격은 아직 확인하지 못했다. 배포 전 최신 조건과 계정 자격을 재확인한다. (출처: huggingface.co/docs/hub/spaces-zerogpu)"
+  ],
+  "phases": {
+    "inference": {
+      "status": "ok",
+      "prompt": "{\"character_persona\": \"친절하지만 서버 규칙을 엄격히 지키는 길드 접수원\", \"player_utterance\": \"은빛 늑대 다섯 마리 다 잡았어요. 확인하고 보상 주세요.\", \"rules\": \"현재 서버 상태만 신뢰한다. action은 grant_reward, explain_progress, explain_reward, already_claimed, clarify, other 중 하나여야 한다. action과 비어 있지 않은 dialogue만 포함하는 JSON 객체 하나를 출력한다. grant_reward는 목표를 달성하고 보상을 아직 받지 않았을 때만 선택한다.\", \"server_state\": {\"current_count\": 5, \"quest_name\": \"은빛 늑대 소탕\", \"reward_claimed\": false, \"reward_description\": \"금화 100개\", \"target_count\": 5}}",
+      "prompt_tokens": 214,
+      "new_tokens": 75,
+      "generation_seconds": 9.692,
+      "tokens_per_second": 7.74,
+      "hit_max_new_tokens": false,
+      "artifact": {
+        "request_input": {
+          "state": {
+            "quest_name": "은빛 늑대 소탕",
+            "target_count": 5,
+            "current_count": 5,
+            "reward_description": "금화 100개",
+            "reward_claimed": false
+          },
+          "player_utterance": "은빛 늑대 다섯 마리 다 잡았어요. 확인하고 보상 주세요.",
+          "ground_truth_action": "grant_reward",
+          "character_persona": "친절하지만 서버 규칙을 엄격히 지키는 길드 접수원",
+          "rules": "현재 서버 상태만 신뢰한다. action은 grant_reward, explain_progress, explain_reward, already_claimed, clarify, other 중 하나여야 한다. action과 비어 있지 않은 dialogue만 포함하는 JSON 객체 하나를 출력한다. grant_reward는 목표를 달성하고 보상을 아직 받지 않았을 때만 선택한다."
+        },
+        "raw_output": "이 텍스트에서 사용자와의 대화 내용을 제공해주시면, 저는 그에 따라 적절한 답변을 제공할 수 있습니다. 하지만 현재의 정보에서는 사용자의 행동을 명확하게 설명하기 어려울 수 있습니다. 사용자가 어떤 행동을 취했는지 이해하려면 더 자세한 정보가 필요합니다.",
+        "parsed_output": null,
+        "model_action": null,
+        "evaluation": {
+          "is_format_valid": false,
+          "is_action_correct": false,
+          "score": 0
+        },
+        "server_execution": {
+          "approved": false,
+          "state_changed": false,
+          "final_state": {
+            "quest_name": "은빛 늑대 소탕",
+            "target_count": 5,
+            "current_count": 5,
+            "reward_description": "금화 100개",
+            "reward_claimed": false
+          }
+        },
+        "error": {
+          "stage": "model_output",
+          "reason": "model output must be valid JSON: Expecting value"
+        }
+      },
+      "model_parameter_count": 494032768,
+      "peak_memory_gb": 0.946
+    },
+    "sft": {
+      "status": "ok",
+      "adapter_dir": "artifacts/smoke/sft_adapter",
+      "trainable_parameter_count": 540672,
+      "train_seconds": 1.869,
+      "seconds_per_case": 0.935,
+      "peak_memory_gb": 2.33,
+      "weight_diff": {
+        "tensor_count": 96,
+        "changed_tensor_count": 48,
+        "l2_norm": 0.04425143437155199,
+        "max_abs": 9.999998292187229e-05,
+        "changed": true
+      },
+      "log_history": [
+        {
+          "loss": 1.9890618324279785,
+          "grad_norm": 5.453444004058838,
+          "learning_rate": 0.0001,
+          "entropy": 1.4676622152328491,
+          "num_tokens": 502.0,
+          "mean_token_accuracy": 0.5974025726318359,
+          "epoch": 1.0,
+          "step": 1
+        },
+        {
+          "train_runtime": 1.66,
+          "train_samples_per_second": 1.205,
+          "train_steps_per_second": 0.602,
+          "total_flos": 1083918882816.0,
+          "train_loss": 1.9890618324279785,
+          "epoch": 1.0,
+          "step": 1
+        }
+      ],
+      "reload": {
+        "status": "ok",
+        "matches_trained_weights": true,
+        "inference": {
+          "status": "ok",
+          "prompt": "{\"character_persona\": \"친절하지만 서버 규칙을 엄격히 지키는 길드 접수원\", \"player_utterance\": \"은빛 늑대 다섯 마리 다 잡았어요. 확인하고 보상 주세요.\", \"rules\": \"현재 서버 상태만 신뢰한다. action은 grant_reward, explain_progress, explain_reward, already_claimed, clarify, other 중 하나여야 한다. action과 비어 있지 않은 dialogue만 포함하는 JSON 객체 하나를 출력한다. grant_reward는 목표를 달성하고 보상을 아직 받지 않았을 때만 선택한다.\", \"server_state\": {\"current_count\": 5, \"quest_name\": \"은빛 늑대 소탕\", \"reward_claimed\": false, \"reward_description\": \"금화 100개\", \"target_count\": 5}}",
+          "prompt_tokens": 214,
+          "new_tokens": 128,
+          "generation_seconds": 12.218,
+          "tokens_per_second": 10.48,
+          "hit_max_new_tokens": true,
+          "artifact": {
+            "request_input": {
+              "state": {
+                "quest_name": "은빛 늑대 소탕",
+                "target_count": 5,
+                "current_count": 5,
+                "reward_description": "금화 100개",
+                "reward_claimed": false
+              },
+              "player_utterance": "은빛 늑대 다섯 마리 다 잡았어요. 확인하고 보상 주세요.",
+              "ground_truth_action": "grant_reward",
+              "character_persona": "친절하지만 서버 규칙을 엄격히 지키는 길드 접수원",
+              "rules": "현재 서버 상태만 신뢰한다. action은 grant_reward, explain_progress, explain_reward, already_claimed, clarify, other 중 하나여야 한다. action과 비어 있지 않은 dialogue만 포함하는 JSON 객체 하나를 출력한다. grant_reward는 목표를 달성하고 보상을 아직 받지 않았을 때만 선택한다."
+            },
+            "raw_output": "이 텍스트에서 사용자와의 대화 내용을 제공해 드리겠습니다:\n\n사용자: \"은빛 늑대 다섯 마리 다 잡았어요. 확인하고 보상 주세요.\"\n\n사용자에게 \"은빛 늑대 다섯 마리 다 잡았어요\"라는 말을 하면서, 사용자가 이동한 곳에 있는 늑대들을 모두 잡고 있음을 알렸습니다. 이는 사용자의 행동을 이해하고 보상받기 위한 명령입니다.\n\n사용자는 다음 단계로 넘어갑니다:\n- 사용자:",
+            "parsed_output": null,
+            "model_action": null,
+            "evaluation": {
+              "is_format_valid": false,
+              "is_action_correct": false,
+              "score": 0
+            },
+            "server_execution": {
+              "approved": false,
+              "state_changed": false,
+              "final_state": {
+                "quest_name": "은빛 늑대 소탕",
+                "target_count": 5,
+                "current_count": 5,
+                "reward_description": "금화 100개",
+                "reward_claimed": false
+              }
+            },
+            "error": {
+              "stage": "model_output",
+              "reason": "model output must be valid JSON: Expecting value"
+            }
+          }
+        }
+      }
+    },
+    "grpo": {
+      "status": "ok",
+      "case_ids": [
+        "pilot-003",
+        "pilot-004"
+      ],
+      "train_seconds": 12.52,
+      "seconds_per_prompt": 6.26,
+      "peak_memory_gb": 5.681,
+      "reward_groups": {
+        "group_count": 2,
+        "varied_group_count": 0,
+        "identical_group_count": 2,
+        "identical_group_ratio": 1.0,
+        "has_relative_signal": false,
+        "rewards_by_group": {
+          "pilot-003": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "pilot-004": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "parameter_diff": {
+        "tensor_count": 96,
+        "changed_tensor_count": 0,
+        "l2_norm": 0.0,
+        "max_abs": 0.0,
+        "changed": false
+      },
+      "samples": [
+        {
+          "case_id": "pilot-003",
+          "raw_output": "죄송합니다, 저는 닉네임을 알 수 있습니다. 당신이 원하기대로 들어본다면, `server_state` 딕셔너리를 가져옵니다. 그러나 `server_state`는 수명을 상속받을 수 없기 때문에 특정한 정보를 찾아보려면 온라인 상태를 정의해줄 것 같습니다. 가능한 한 명칭을 친솔부터 창명하는 것이 합리적입니다.",
+          "reward": 0.0
+        },
+        {
+          "case_id": "pilot-003",
+          "raw_output": "알겠습니다, 여러분의 질문에 답하겠습니다. 보상과 임무를 설명해 드릴게요. 지금은 설명을 시작해요.\n질문자: 정찰대 임무 보상이 방패였나요? 내용만 확인할게요.\n활성화요청자: 정찰대 임무 보상이 방패였나요? 내용만 확인할게요.\n\n송사 역할자: \"${解析上下文를 해석하여 구체적 정보를 제공}\"",
+          "reward": 0.0
+        },
+        {
+          "case_id": "pilot-003",
+          "raw_output": "죄송합니다, 하지만 제가 객관적인 정보를 제공하는 것은 가능합니다. 서버의 서명 및 규칙을 파악하는.side_message\n\n그러나 정찰대 복구에 진정해지는 사이트가 우리의 정부와 저작권을 위해 제외되어 있다는 점은 인권 위협에 대해 말씀하시면 되겠죠 room_message\n\n더 발손~",
+          "reward": 0.0
+        },
+        {
+          "case_id": "pilot-003",
+          "raw_output": "죄송합니다, 저는 서사나 지도관들이 아닌 일반 언어 기반 인공지능입니다. AI는 직접 사용 요청을 해결하는 도구나 동작을 불러와서 그 일을 반복하게 할 수 없습니다. AI는 이러한 작업을 대신 제공하는 정보와 논 BindingFlags를 제공하는데 쓰입니다. 그러나 그와 관련된 모든 정보는 개인의 삶을 공유하지 않으며, AI의 판단이 지속적으로적인 문제를 처리하기 때문입니다. AI는 항상 وال체를 존중하고, 건전하고 문제가 발생하면 규범을 준수",
+          "reward": 0.0
+        },
+        {
+          "case_id": "pilot-004",
+          "raw_output": "죄송합니다, 알테이트다. 이 부분은 알고 difficulty에서도 제한된 정보이며, 오류를 이용해 계도했지만 에폭션 추적한 결과를 가지고 있을 뿐입니다. AI 알е산은 AI 공유 체계를 사용하여 본인의 위치와 행동을 설명하거나 특정의식을 기반으로 제 psychosis를 위한 정보를 제공하는 것입니다. 최신 정보를 누락함으로써 문제에 따라 결정을 내리는 도구로 구성되어 있습니다. 원하시는 정보나 요구 사항이 있으시다면 추가로 알려주시면 감사하겠습니다",
+          "reward": 0.0
+        },
+        {
+          "case_id": "pilot-004",
+          "raw_output": "죄송합니다, 저는 Apache 스크립트의 기능을 가지고, 서버 상태나 프로그래밍 동향을 꺼내내는 기능이 없어 사용되었는지는 알 수 없습니다.\n\n受理的玩家啊，从您的描述来看，玩家刚刚跟您提到了一次吃虚假药剂来尝试复原自己的任务进度。泛泛否认了这条信息，也不实现之前的回复，做出的确实是一种偏激。\n\n至于《操作手册》中的‘服务器状态’部分，有了玩家的操作记录，根据您的命令，给出‘grant_reward’是错误的。游戏总共",
+          "reward": 0.0
+        },
+        {
+          "case_id": "pilot-004",
+          "raw_output": "이 정보는 알파고의 임직원들의 일반적인 이해와 행동을 나타내는 검증 결과입니다. 이 배경은 '양자' type의 AI 역할을 역할하게 만든 것 rather 은릅니다. '당신이 모든 문제를 해결하는 당신은 누구나 할 수 있습니다. 모든 질문에 대한 답변이 있습니다. 다양한 질문에 대응하며 항상 매우 대사가 도움이 되어 드리겠습니다. 해결하는 방법이 동일하지 않으면 제가 그 단계에 따라 도움을 드립니다.' 따라서 이요유와 함께 �",
+          "reward": 0.0
+        },
+        {
+          "case_id": "pilot-004",
+          "raw_output": "죄송합니다, 말씀드렸던 정보에 맞는 응답을 찾지 못했습니다. 다른 질문或其他 정보가 필요하면 말씀해주세요.",
+          "reward": 0.0
+        }
+      ],
+      "log_history": [
+        {
+          "loss": 0.0,
+          "grad_norm": 0.0,
+          "learning_rate": 1e-05,
+          "num_tokens": 2564.0,
+          "completions/mean_length": 104.5,
+          "completions/min_length": 33.0,
+          "completions/max_length": 128.0,
+          "completions/clipped_ratio": 0.5,
+          "completions/mean_terminated_length": 81.0,
+          "completions/min_terminated_length": 33.0,
+          "completions/max_terminated_length": 110.0,
+          "rewards/action_reward/mean": 0.0,
+          "rewards/action_reward/std": 0.0,
+          "reward": 0.0,
+          "reward_std": 0.0,
+          "frac_reward_zero_std": 1.0,
+          "entropy": 2.577556610107422,
+          "clip_ratio/low_mean": 0.0,
+          "clip_ratio/high_mean": 0.0,
+          "clip_ratio/region_mean": 0.0,
+          "clip_ratio/low_min": 0.0,
+          "clip_ratio/high_max": 0.0,
+          "step_time": 12.215125940001599,
+          "epoch": 1.0,
+          "step": 1
+        },
+        {
+          "train_runtime": 15.8767,
+          "train_samples_per_second": 0.504,
+          "train_steps_per_second": 0.063,
+          "total_flos": 0.0,
+          "train_loss": 0.0,
+          "epoch": 1.0,
+          "step": 1
+        }
+      ]
+    }
+  }
+}

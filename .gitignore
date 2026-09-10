@@ -26,6 +26,8 @@ wheels/
 /models/
 /checkpoints/
 /outputs/
+# 스모크 전용 체크포인트·로그 (본 실험 결과로 재사용 금지)
+/artifacts/smoke/
 *.safetensors
 *.pt
 *.pth
