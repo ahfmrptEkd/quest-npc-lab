@@ -2,7 +2,7 @@
 
 한국어 퀘스트 NPC의 행동 선택을 **프롬프트 개선 → LoRA SFT → GRPO**로 비교하는 연구 포트폴리오 프로젝트.
 
-> **현재 상태: 설계·조사 단계.** 학습·평가·공개 데모는 아직 실행하지 않았으며, 패키지와 CLI는 구현 전입니다. 아래 내용은 계획이지 완료된 실험 결과가 아닙니다.
+> **현재 상태: 설계 승인 완료, 구현 전.** 데이터 구축·학습·평가·공개 데모는 아직 실행하지 않았으며, 패키지와 CLI는 구현 전입니다. 아래 내용은 계획이지 완료된 실험 결과가 아닙니다.
 
 ## 실험 범위
 
@@ -15,6 +15,8 @@
 ## 문서
 
 - [설계와 합의된 결정](docs/design.md)
+- [실행 명세·테스트 경계](https://github.com/ahfmrptEkd/quest-npc-lab/issues/1)
+- [작업 티켓과 선행 관계](https://github.com/ahfmrptEkd/quest-npc-lab/issues)
 - [공개 데이터셋 조사](docs/dataset-research.md)
 - [시각 연출 후보 조사](docs/visual-research.md)
 
