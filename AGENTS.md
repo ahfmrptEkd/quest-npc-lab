@@ -5,6 +5,12 @@ scope and approval gates. Research proposals do not override those decisions.
 
 ## Git workflow
 
+- Never push or commit directly to `main`. All changes landing in `main` must
+  arrive via pull requests.
+- Subagents and workflows working on implementation tickets or parallelizable
+  tasks must use dedicated `git worktree` instances on short-lived branches
+  instead of working in the root workspace. PR merges between worktrees or
+  feature branches are permitted.
 - After each coherent, approved task, verify the change and review the staged
   diff for unintended files, personal information, and secrets. Then commit
   and push without requesting separate permission for those Git operations.
@@ -15,10 +21,9 @@ scope and approval gates. Research proposals do not override those decisions.
   Example: `doc(agents): configure repository skill conventions`.
   Use types such as `feat`, `fix`, `doc`, `refactor`, `test`, and `chore`;
   category names the affected area.
-- Implementation tickets use short-lived branches and PRs. Narrow maintenance
-  does not require a PR for every change. PR bodies use exactly `## Why`,
-  `## What changed`, and `## Testing` as their sections. Report actual checks
-  and results, including checks not run.
+- Implementation tickets use short-lived branches and PRs. PR bodies use
+  exactly `## Why`, `## What changed`, and `## Testing` as their sections.
+  Report actual checks and results, including checks not run.
 
 ## Agent skills
 
