@@ -19,7 +19,7 @@ class Hyperparameters:
     learning_rate: float = 1e-5
     epsilon: float = 1e-4
     temperature: float = 1.0
-    max_training_seconds: int = 900
+    max_training_seconds: int = 1800
 
 
 def run_training(directory: Path, *, preflight=False) -> dict[str, Any]:
@@ -251,7 +251,7 @@ def train_and_save(directory, output, config, report, *, preflight):
             "top_p": 1.0,
             "max_new_tokens": manifest["generation"]["max_new_tokens"],
             "identical_reward_groups": "skip optimizer step including momentum",
-            "stop_policy": "one pass, 900 training seconds checked between groups; no retries",
+            "stop_policy": "one pass, 1800 training seconds checked between groups; no retries",
         },
         reward_specification="1.0 iff strict format passes and original parsed action matches ground truth; otherwise 0.0. Single completed-response terminal reward.",
         environment={

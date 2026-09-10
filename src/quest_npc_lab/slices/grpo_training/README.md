@@ -51,7 +51,7 @@ to limit GPU memory. Non-finite loss/gradients fail the run.
 The sampling-only preflight writes to `artifacts/grpo_preflight/`, processes four
 fixed shuffled training inputs, and makes no updates or checkpoint. Its projected
 full sampling time is a lower bound because backward passes are excluded. Inspect
-its timings before the main run. The main training limit is 900 seconds, checked
+its timings before the main run. The main training limit is 1800 seconds, checked
 between groups, plus model setup/save/reload. This cooperative limit cannot stop a
 hung CUDA operation. There is no automatic retry, seed search, or checkpoint
 selection from validation/final evaluation. Additional long runs require a new

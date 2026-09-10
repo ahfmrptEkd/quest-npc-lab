@@ -25,9 +25,9 @@
     ],
     "max_training_seconds": 900
   },
-  "adapter_parameter_sha256": "ff93b623e5ae2e171cef262ebd1ac2d97de590b36d42069a37c725609718a905",
+  "adapter_parameter_sha256": "1a799be25009fff1350e8d770da4a40c697d007445449a6f56090d68b74abe8c",
   "checkpoint_files": {
-    "adapter_config.json": "2b4293c149e090ab6e396b8129dd8f0052986a97d923a80820991aac4ca2de71",
-    "adapter_model.safetensors": "61054c27076861de431c92862aecbded6f2cd81aadf4bcbf442920a74a3d9c7c"
+    "adapter_config.json": "d16d75e0bc37fed47ae3e17d089b068a699406a65dd443d48fd2f2a684e96de9",
+    "adapter_model.safetensors": "227c0e2089634597d488b2afdccaa517a23e50b0dcebb8e7cb8caa2f40a2e898"
   }
 }
