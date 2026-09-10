@@ -1,0 +1,29 @@
+{
+  "run_kind": "main_grpo",
+  "status": "failed",
+  "created_at": "2026-09-10T08:26:18.698358+00:00",
+  "hyperparameters": {
+    "group_size": 4,
+    "seed": 42,
+    "epochs": 1,
+    "learning_rate": 1e-05,
+    "epsilon": 0.0001,
+    "temperature": 1.0,
+    "max_training_seconds": 900
+  },
+  "groups": [],
+  "reload_verification": {
+    "status": "not_run"
+  },
+  "group_size": 4,
+  "group_count": 0,
+  "step_count": 0,
+  "groups_with_differing_rewards": 0,
+  "groups_with_identical_rewards": 0,
+  "nonzero_reward_variance_fraction": 0.0,
+  "policy_loss_curve": [],
+  "parameter_delta_norm": 0.0,
+  "acceptance_passed": false,
+  "error": "ValueError: preserved SFT checkpoint requires adapter_config.json, adapter_model.safetensors, and training_metadata.json",
+  "execution_seconds": 3.4495998988859355e-05
+}

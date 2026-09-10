@@ -38,3 +38,7 @@ wheels/
 /artifacts/sft_checkpoint/*
 !/artifacts/sft_checkpoint/training_metadata.json
 /artifacts/sft_trainer/
+
+# GRPO adapter weights stay local; provenance remains reviewable
+/artifacts/grpo_checkpoint/*
+!/artifacts/grpo_checkpoint/training_metadata.json
