@@ -3,6 +3,14 @@
 Before planning or changing implementation, read `docs/design.md` for agreed
 scope and approval gates. Research proposals do not override those decisions.
 
+## Architecture
+
+Organize code by Vertical Slice Architecture. Structure by distinct feature or
+capability rather than horizontal technical layers. Each slice encapsulates its
+inputs, domain rules, execution logic, and state changes end-to-end. Co-locate
+tests, schemas, and handlers within their slice. Share code only when verified
+common across slices; avoid speculative shared abstractions.
+
 ## Git workflow
 
 - Never push implementation commits directly to `main`. All implementation
