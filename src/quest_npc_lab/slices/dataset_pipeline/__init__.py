@@ -1,4 +1,4 @@
-"""Pilot dataset generation and approval slice."""
+"""Pilot and expanded dataset generation, validation, and approval slice."""
 
 from .dataset_pipeline import (
     ActionType,
@@ -17,12 +17,14 @@ from .dataset_pipeline import (
     evaluate_shortcut_baselines,
     evaluate_shortcut_patterns,
     load_pilot_dataset,
+    load_dataset,
     load_review_manifest,
     load_shortcut_baseline_report,
     prepare_training_cases,
     validate_dataset,
     validate_pilot_dataset,
     validate_review_manifest,
+    validate_train_validation_datasets,
 )
 
 __all__ = [
@@ -42,10 +44,12 @@ __all__ = [
     "evaluate_shortcut_baselines",
     "evaluate_shortcut_patterns",
     "load_pilot_dataset",
+    "load_dataset",
     "load_review_manifest",
     "load_shortcut_baseline_report",
     "prepare_training_cases",
     "validate_dataset",
     "validate_pilot_dataset",
     "validate_review_manifest",
+    "validate_train_validation_datasets",
 ]

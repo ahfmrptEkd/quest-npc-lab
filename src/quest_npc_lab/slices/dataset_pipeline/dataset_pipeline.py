@@ -544,7 +544,7 @@ def validate_dataset(cases: Sequence[DatasetCase]) -> None:
 
 @dataclass(frozen=True, slots=True)
 class PilotDatasetSummary:
-    """Counts captured after the complete pilot contract passes validation."""
+    """Validated pilot or expanded split counts; original public name retained."""
 
     total: int
     action_counts: dict[str, int]
@@ -589,39 +589,88 @@ def validate_pilot_dataset(cases: Sequence[DatasetCase]) -> PilotDatasetSummary:
 def prepare_training_cases(
     cases: Sequence[DatasetCase],
 ) -> tuple[DatasetCase, ...]:
-    """Allow only a complete, user-approved pilot into downstream training."""
-    validate_pilot_dataset(cases)
+    """Allow only a complete, user-approved pilot or expansion into training."""
+    if {case.split for case in cases} == {"train_pilot"}:
+        validate_pilot_dataset(cases)
+    else:
+        _validate_approved_split(cases, split="train", total=180)
     if {case.review_status for case in cases} != {"user_approved"}:
         raise DatasetValidationError(
-            "user approval is required before pilot cases enter training"
+            "user approval is required before cases enter training"
         )
     return tuple(cases)
 
 
+def _validate_approved_split(
+    cases: Sequence[DatasetCase], *, split: str, total: int
+) -> PilotDatasetSummary:
+    validate_dataset(cases)
+    if len(cases) != total:
+        raise DatasetValidationError(f"{split} dataset must contain exactly {total} cases")
+    counts = Counter(case.ground_truth_action.value for case in cases)
+    if counts != {action.value: total // 6 for action in ActionType}:
+        raise DatasetValidationError(f"{split} action counts must be balanced")
+    if {case.split for case in cases} != {split}:
+        raise DatasetValidationError(f"all cases must use split {split}")
+    if {case.review_status for case in cases} != {"user_approved"}:
+        raise DatasetValidationError(f"user approval is required for {split}")
+    if split == "train" and any(
+        replace(case, split="train") not in cases for case in load_pilot_dataset()
+    ):
+        raise DatasetValidationError("train must retain every approved pilot case")
+    scores = evaluate_shortcut_patterns(cases)
+    if any(score.accuracy == 1.0 for score in scores.values()):
+        raise DatasetValidationError(f"{split} must defeat every shortcut pattern")
+    tags = Counter(tag for case in cases for tag in case.shortcut_tags)
+    return PilotDatasetSummary(
+        total=total,
+        action_counts=dict(counts),
+        shortcut_tag_counts=dict(sorted(tags.items())),
+        expression_group_count=len({case.expression_group for case in cases}),
+        review_status="user_approved",
+    )
+
+
+def validate_train_validation_datasets(
+    train: Sequence[DatasetCase], validation: Sequence[DatasetCase]
+) -> dict[str, PilotDatasetSummary]:
+    """Verify approved split sizes, pilot retention, shortcuts, and joint isolation."""
+    summaries = {
+        "train": _validate_approved_split(train, split="train", total=180),
+        "validation": _validate_approved_split(validation, split="validation", total=60),
+    }
+    validate_dataset((*train, *validation))
+    return summaries
+
+
 def load_pilot_dataset(path: Path | None = None) -> tuple[DatasetCase, ...]:
     """Load the checked-in pilot JSONL through the strict case schema."""
-    source = PILOT_DATASET_PATH if path is None else path
+    return load_dataset(PILOT_DATASET_PATH if path is None else path)
+
+
+def load_dataset(path: Path) -> tuple[DatasetCase, ...]:
+    """Load any split's JSONL through the strict case schema."""
     cases: list[DatasetCase] = []
     try:
-        lines = source.read_text(encoding="utf-8").splitlines()
+        lines = path.read_text(encoding="utf-8").splitlines()
     except OSError as error:
-        raise DatasetValidationError(f"could not read pilot dataset: {error}") from error
+        raise DatasetValidationError(f"could not read dataset: {error}") from error
     for line_number, line in enumerate(lines, start=1):
         if not line.strip():
             raise DatasetValidationError(
-                f"pilot dataset contains a blank line at {line_number}"
+                f"dataset contains a blank line at {line_number}"
             )
         try:
             payload = json.loads(line)
         except json.JSONDecodeError as error:
             raise DatasetValidationError(
-                f"pilot dataset line {line_number} is invalid JSON: {error.msg}"
+                f"dataset line {line_number} is invalid JSON: {error.msg}"
             ) from error
         try:
             cases.append(DatasetCase.from_dict(payload))
         except DatasetValidationError as error:
             raise DatasetValidationError(
-                f"pilot dataset line {line_number}: {error}"
+                f"dataset line {line_number}: {error}"
             ) from error
     return tuple(cases)
 
@@ -644,17 +693,26 @@ def validate_review_manifest(
     *,
     dataset_path: Path,
 ) -> None:
-    """Bind three approval records to the exact reviewed dataset bytes."""
+    """Bind consecutive 20-case approval records to reviewed dataset bytes."""
     expected_digest = hashlib.sha256(dataset_path.read_bytes()).hexdigest()
     if manifest.get("dataset") != dataset_path.name:
         raise DatasetValidationError("review manifest references the wrong dataset")
     if manifest.get("dataset_sha256") != expected_digest:
         raise DatasetValidationError("review manifest dataset_sha256 does not match")
+    if tuple(cases) != load_dataset(dataset_path):
+        raise DatasetValidationError("review cases do not match the hashed dataset")
     if manifest.get("batch_size") != 20:
         raise DatasetValidationError("review manifest batch_size must be 20")
     batches = manifest.get("batches")
-    if not isinstance(batches, list) or len(batches) != 3:
-        raise DatasetValidationError("review manifest must contain exactly three batches")
+    if (
+        not cases
+        or len(cases) % 20
+        or not isinstance(batches, list)
+        or len(batches) != len(cases) // 20
+    ):
+        raise DatasetValidationError(
+            "review manifest batches must cover all cases in groups of 20"
+        )
     expected_start = 1
     for batch_number, batch in enumerate(batches, start=1):
         if not isinstance(batch, dict):
@@ -690,7 +748,11 @@ def validate_review_manifest(
             )
         user_status = user_review["status"]
         duration = user_review.get("duration_seconds")
-        if user_status == "approved" and (
+        task_authorized = (
+            user_review.get("approval_basis") == "explicit_task_instruction"
+            and duration is None
+        )
+        if user_status == "approved" and not task_authorized and (
             isinstance(duration, bool)
             or not isinstance(duration, (int, float))
             or duration < 0

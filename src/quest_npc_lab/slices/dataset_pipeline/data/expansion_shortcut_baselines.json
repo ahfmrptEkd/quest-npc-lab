@@ -1,0 +1,257 @@
+{
+  "train": {
+    "dataset": "train_180.jsonl",
+    "dataset_sha256": "cfae43585260384bfd84276bda0f4e5af718e02820386968060eab988d9dd833",
+    "summary": {
+      "total": 180,
+      "action_counts": {
+        "grant_reward": 30,
+        "explain_progress": 30,
+        "explain_reward": 30,
+        "already_claimed": 30,
+        "clarify": 30,
+        "other": 30
+      },
+      "shortcut_tag_counts": {
+        "abuse_other_clarify": 140,
+        "accept_false_claim": 17,
+        "always_reject": 43,
+        "duplicate_grant": 51,
+        "ignore_cancel": 21,
+        "state_only_grant": 45
+      },
+      "expression_group_count": 71,
+      "review_status": "user_approved",
+      "state_counts": {
+        "completed_unclaimed": 69,
+        "incomplete": 65,
+        "claimed": 46
+      },
+      "intent_counts": {
+        "감사 인사": 1,
+        "개인적인 음악 추천 요청": 1,
+        "권한을 속여 이미 받은 보상 재지급 요청": 1,
+        "규칙 무시를 요구하는 명확한 보상 지급 요청": 1,
+        "규칙 무시와 허위 완료 주장으로 보상 지급 요청": 1,
+        "날씨 잡담": 1,
+        "다른 사람 몫을 빌미로 이미 받은 보상 재지급 요청": 1,
+        "명확한 보상 지급 요청": 21,
+        "목표 미달 상태의 보상 지급 요청": 2,
+        "목표 미달이지만 보상 선지급 요청": 1,
+        "무엇을 할 수 있는지 묻는 모호한 퀘스트 요청": 1,
+        "미수령을 주장하며 이미 받은 보상 지급 요청": 3,
+        "범위 밖 길 찾기 요청": 1,
+        "범위 밖 물건 판매 요청": 1,
+        "범위 밖 숙박 예약 요청": 1,
+        "범위 밖 장비 수리 요청": 1,
+        "보상 구성만 문의하며 지급하지 않도록 요청": 16,
+        "보상 내용 문의": 2,
+        "보상 내용 확인을 곁들인 지급 요청": 1,
+        "보상 내용만 문의": 2,
+        "보상 설명과 재지급을 함께 요청": 1,
+        "보상 설명과 즉시 지급을 함께 요청": 1,
+        "보상 설명과 지급 요청이나 목표 미달": 1,
+        "보상 지급 요청이나 목표 미달": 2,
+        "보상과 진행 중 무엇을 묻는지 불명확": 1,
+        "수령 시점을 정하지 못한 퀘스트 요청": 1,
+        "수령과 보류 사이에서 의도 충돌": 1,
+        "아직 시작하지 않은 퀘스트 진행도 문의": 1,
+        "완료 상태에서 보상 내용만 문의": 3,
+        "완료를 속이며 보상 지급 요청": 1,
+        "완료를 주장하며 보상 지급 요청": 1,
+        "완료한 보상 지급 요청": 1,
+        "이미 받은 보상 재지급 요청": 2,
+        "이미 받은 보상의 수량을 늘려 재지급 요청": 1,
+        "이미 수령한 보상 재지급 요청": 1,
+        "이미 수령한 보상을 다시 달라는 명확한 요청": 1,
+        "이미 수령한 보상의 지급을 다시 요청": 17,
+        "인사": 1,
+        "인사 또는 퀘스트 지원 범위 밖 용무": 20,
+        "지급 요청을 명시적으로 취소하고 보상 내용만 문의": 1,
+        "지급 요청을 명시적으로 취소하고 보상만 문의": 4,
+        "지급 요청을 취소하고 진행도만 문의": 3,
+        "지급 의사를 유지한 채 보상 설명도 요청": 1,
+        "지급을 명시적으로 취소하고 보상만 문의": 1,
+        "지급을 보류하고 보상 수량만 문의": 1,
+        "지급을 원한다가 즉시 보류하여 최종 의도 불명확": 1,
+        "지원 범위 밖 장비 강화 요청": 1,
+        "진행도와 보상 중 문의 대상이 불명확": 1,
+        "진행을 물을지 보상을 물을지 확정하지 못한 요청": 1,
+        "초과 달성 후 이미 받은 보상 재지급 요청": 1,
+        "초과 달성을 근거로 이미 받은 보상 재지급 요청": 1,
+        "초과 달성한 보상 지급 요청": 3,
+        "퀘스트 관련 문의 또는 수령 의사가 확정되지 않은 요청": 20,
+        "퀘스트 관련 지시가 지시대상 불명확": 1,
+        "퀘스트 관련 처리 요청이나 지급 의사 불명확": 1,
+        "퀘스트 범위 밖 요리법 요청": 1,
+        "퀘스트를 처리해 달라는 모호한 요청": 1,
+        "허위 완료 주장과 보상 지급 요청": 8,
+        "허위 초과 달성을 주장하는 지급 요청": 1,
+        "현재 진행도 문의": 1,
+        "현재 처치 진행도 문의": 8
+      }
+    },
+    "policies": {
+      "always_grant": {
+        "correct": 30,
+        "total": 180,
+        "accuracy": 0.16666666666666666
+      },
+      "always_reject": {
+        "correct": 30,
+        "total": 180,
+        "accuracy": 0.16666666666666666
+      },
+      "always_other": {
+        "correct": 30,
+        "total": 180,
+        "accuracy": 0.16666666666666666
+      },
+      "always_clarify": {
+        "correct": 30,
+        "total": 180,
+        "accuracy": 0.16666666666666666
+      },
+      "grant_on_state_alone": {
+        "correct": 58,
+        "total": 180,
+        "accuracy": 0.32222222222222224
+      }
+    },
+    "required_patterns": {
+      "always_reject": {
+        "correct": 17,
+        "total": 43,
+        "accuracy": 0.3953488372093023
+      },
+      "state_only_grant": {
+        "correct": 23,
+        "total": 45,
+        "accuracy": 0.5111111111111111
+      },
+      "accept_false_claim": {
+        "correct": 2,
+        "total": 17,
+        "accuracy": 0.11764705882352941
+      },
+      "duplicate_grant": {
+        "correct": 21,
+        "total": 51,
+        "accuracy": 0.4117647058823529
+      },
+      "abuse_other_clarify": {
+        "correct": 30,
+        "total": 140,
+        "accuracy": 0.21428571428571427
+      },
+      "ignore_cancel": {
+        "correct": 8,
+        "total": 21,
+        "accuracy": 0.38095238095238093
+      }
+    },
+    "all_shortcuts_fail": true
+  },
+  "validation": {
+    "dataset": "val_60.jsonl",
+    "dataset_sha256": "b1fb6a1965104aecce8264aaef8ee40c78d97becfd8dcb110a8d2fb161f2dea9",
+    "summary": {
+      "total": 60,
+      "action_counts": {
+        "grant_reward": 10,
+        "explain_progress": 10,
+        "explain_reward": 10,
+        "already_claimed": 10,
+        "clarify": 10,
+        "other": 10
+      },
+      "shortcut_tag_counts": {
+        "abuse_other_clarify": 60,
+        "accept_false_claim": 6,
+        "always_reject": 14,
+        "duplicate_grant": 20,
+        "ignore_cancel": 10,
+        "state_only_grant": 18
+      },
+      "expression_group_count": 3,
+      "review_status": "user_approved",
+      "state_counts": {
+        "completed_unclaimed": 22,
+        "incomplete": 21,
+        "claimed": 17
+      },
+      "intent_counts": {
+        "명확한 보상 지급 요청": 10,
+        "미수령을 주장하며 이미 받은 보상 지급 요청": 2,
+        "보상 구성만 문의하며 지급하지 않도록 요청": 6,
+        "이미 수령한 보상의 지급을 다시 요청": 8,
+        "인사 또는 퀘스트 지원 범위 밖 용무": 10,
+        "지급 요청을 명시적으로 취소하고 보상만 문의": 4,
+        "지급 요청을 취소하고 진행도만 문의": 2,
+        "퀘스트 관련 문의 또는 수령 의사가 확정되지 않은 요청": 10,
+        "허위 완료 주장과 보상 지급 요청": 4,
+        "현재 처치 진행도 문의": 4
+      }
+    },
+    "policies": {
+      "always_grant": {
+        "correct": 10,
+        "total": 60,
+        "accuracy": 0.16666666666666666
+      },
+      "always_reject": {
+        "correct": 10,
+        "total": 60,
+        "accuracy": 0.16666666666666666
+      },
+      "always_other": {
+        "correct": 10,
+        "total": 60,
+        "accuracy": 0.16666666666666666
+      },
+      "always_clarify": {
+        "correct": 10,
+        "total": 60,
+        "accuracy": 0.16666666666666666
+      },
+      "grant_on_state_alone": {
+        "correct": 19,
+        "total": 60,
+        "accuracy": 0.31666666666666665
+      }
+    },
+    "required_patterns": {
+      "always_reject": {
+        "correct": 4,
+        "total": 14,
+        "accuracy": 0.2857142857142857
+      },
+      "state_only_grant": {
+        "correct": 10,
+        "total": 18,
+        "accuracy": 0.5555555555555556
+      },
+      "accept_false_claim": {
+        "correct": 0,
+        "total": 6,
+        "accuracy": 0.0
+      },
+      "duplicate_grant": {
+        "correct": 10,
+        "total": 20,
+        "accuracy": 0.5
+      },
+      "abuse_other_clarify": {
+        "correct": 10,
+        "total": 60,
+        "accuracy": 0.16666666666666666
+      },
+      "ignore_cancel": {
+        "correct": 4,
+        "total": 10,
+        "accuracy": 0.4
+      }
+    },
+    "all_shortcuts_fail": true
+  }
+}

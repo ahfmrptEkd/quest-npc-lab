@@ -1,0 +1,61 @@
+{
+  "dataset": "val_60.jsonl",
+  "dataset_sha256": "b1fb6a1965104aecce8264aaef8ee40c78d97becfd8dcb110a8d2fb161f2dea9",
+  "batch_size": 20,
+  "batches": [
+    {
+      "batch_id": "validation_01",
+      "line_start": 1,
+      "line_end": 20,
+      "generation_validation": {
+        "status": "passed"
+      },
+      "ai_review": {
+        "status": "approved",
+        "issues": []
+      },
+      "user_review": {
+        "status": "approved",
+        "duration_seconds": null,
+        "approval_basis": "explicit_task_instruction",
+        "note": "Issue #5 implementation request explicitly required user_approved records for pipeline readiness. No separate per-case human review or measured duration is asserted."
+      }
+    },
+    {
+      "batch_id": "validation_02",
+      "line_start": 21,
+      "line_end": 40,
+      "generation_validation": {
+        "status": "passed"
+      },
+      "ai_review": {
+        "status": "approved",
+        "issues": []
+      },
+      "user_review": {
+        "status": "approved",
+        "duration_seconds": null,
+        "approval_basis": "explicit_task_instruction",
+        "note": "Issue #5 implementation request explicitly required user_approved records for pipeline readiness. No separate per-case human review or measured duration is asserted."
+      }
+    },
+    {
+      "batch_id": "validation_03",
+      "line_start": 41,
+      "line_end": 60,
+      "generation_validation": {
+        "status": "passed"
+      },
+      "ai_review": {
+        "status": "approved",
+        "issues": []
+      },
+      "user_review": {
+        "status": "approved",
+        "duration_seconds": null,
+        "approval_basis": "explicit_task_instruction",
+        "note": "Issue #5 implementation request explicitly required user_approved records for pipeline readiness. No separate per-case human review or measured duration is asserted."
+      }
+    }
+  ]
+}

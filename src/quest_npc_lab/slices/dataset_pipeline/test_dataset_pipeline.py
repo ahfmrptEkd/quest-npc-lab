@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 from dataclasses import replace
+import hashlib
 import json
+from pathlib import Path
 
 import pytest
 
@@ -18,6 +20,7 @@ from quest_npc_lab.slices.dataset_pipeline import (
     build_model_prompt,
     evaluate_shortcut_baselines,
     evaluate_shortcut_patterns,
+    load_dataset,
     load_pilot_dataset,
     load_review_manifest,
     load_shortcut_baseline_report,
@@ -25,6 +28,7 @@ from quest_npc_lab.slices.dataset_pipeline import (
     validate_dataset,
     validate_pilot_dataset,
     validate_review_manifest,
+    validate_train_validation_datasets,
 )
 
 
@@ -430,3 +434,158 @@ def test_stored_shortcut_report_matches_recomputed_policy_scores() -> None:
         }
         for name, score in pattern_scores.items()
     }
+
+
+def test_review_manifest_covers_nine_batches_for_expanded_training(tmp_path: Path) -> None:
+    cases = tuple(
+        replace(case, split="train", review_status="user_approved")
+        for batch in range(9)
+        for case in mixed_batch(batch * 20)
+    )
+    dataset_path = tmp_path / "train_180.jsonl"
+    dataset_path.write_text(
+        "\n".join(json.dumps(case.to_dict()) for case in cases) + "\n",
+        encoding="utf-8",
+    )
+    manifest = {
+        "dataset": dataset_path.name,
+        "dataset_sha256": hashlib.sha256(dataset_path.read_bytes()).hexdigest(),
+        "batch_size": 20,
+        "batches": [
+            {
+                "batch_id": f"train_{index + 1:02}",
+                "line_start": index * 20 + 1,
+                "line_end": (index + 1) * 20,
+                "generation_validation": {"status": "passed"},
+                "ai_review": {"status": "approved", "issues": []},
+                "user_review": {"status": "approved", "duration_seconds": 0},
+            }
+            for index in range(9)
+        ],
+    }
+    validate_review_manifest(cases, manifest, dataset_path=dataset_path)
+    manifest["batches"].pop()
+    with pytest.raises(DatasetValidationError, match="batches"):
+        validate_review_manifest(cases, manifest, dataset_path=dataset_path)
+
+
+def expanded_training_fixture() -> tuple[DatasetCase, ...]:
+    pilot = tuple(replace(case, split="train") for case in load_pilot_dataset())
+    additions = tuple(
+        replace(case_for_action(tuple(ActionType)[index % 6], index),
+                split="train", review_status="user_approved")
+        for index in range(120)
+    )
+    return pilot + additions
+
+
+def test_training_preparation_accepts_complete_approved_expansion() -> None:
+    cases = expanded_training_fixture()
+    assert prepare_training_cases(cases) == cases
+    with pytest.raises(DatasetValidationError, match="180"):
+        prepare_training_cases(cases[:-1])
+    with pytest.raises(DatasetValidationError, match="user approval"):
+        prepare_training_cases((replace(cases[0], review_status="ai_approved"), *cases[1:]))
+
+
+def test_expansion_preserves_every_approved_pilot_case() -> None:
+    cases = expanded_training_fixture()
+    changed_pilot = (replace(cases[0], reference_dialogue="승인 후 바뀐 대사"), *cases[1:])
+    with pytest.raises(DatasetValidationError, match="pilot"):
+        prepare_training_cases(changed_pilot)
+
+
+def test_joint_validation_checks_balance_approval_and_split_isolation() -> None:
+    train = expanded_training_fixture()
+    validation = tuple(
+        replace(case, split="validation", expression_group=f"heldout-{index}",
+                player_utterance=f"Held out query {chr(0xAC00 + index)}")
+        for index, case in enumerate(load_pilot_dataset())
+    )
+    summaries = validate_train_validation_datasets(train, validation)
+    assert summaries["train"].total == 180
+    assert summaries["validation"].action_counts == {action.value: 10 for action in ActionType}
+    for changed, reason in [
+        (validation[:-1], "60"),
+        ((replace(validation[0], review_status="ai_approved"), *validation[1:]), "user approval"),
+        ((replace(validation[0], expression_group=train[0].expression_group), *validation[1:]), "crosses splits"),
+        ((replace(validation[0], player_utterance=train[0].player_utterance), *validation[1:]), "duplicate"),
+        ((replace(validation[0], ground_truth_action=ActionType.EXPLAIN_REWARD), *validation[1:]), "balanced"),
+    ]:
+        with pytest.raises(DatasetValidationError, match=reason):
+            validate_train_validation_datasets(train, changed)
+
+
+def test_jsonl_loader_supports_expanded_splits_and_rejects_blank_rows(tmp_path: Path) -> None:
+    case = replace(valid_case(), split="validation")
+    path = tmp_path / "val_60.jsonl"
+    path.write_text(json.dumps(case.to_dict(), ensure_ascii=False) + "\n", encoding="utf-8")
+    assert load_dataset(path) == (case,)
+    path.write_text(path.read_text(encoding="utf-8") + "\n", encoding="utf-8")
+    with pytest.raises(DatasetValidationError, match="blank line at 2"):
+        load_dataset(path)
+
+
+def test_task_authorization_records_no_invented_manual_review_time() -> None:
+    cases = load_pilot_dataset()
+    manifest = load_review_manifest()
+    for batch in manifest["batches"]:
+        batch["user_review"] = {
+            "status": "approved",
+            "approval_basis": "explicit_task_instruction",
+            "duration_seconds": None,
+        }
+    validate_review_manifest(cases, manifest, dataset_path=PILOT_DATASET_PATH)
+    del manifest["batches"][0]["user_review"]["approval_basis"]
+    with pytest.raises(DatasetValidationError, match="duration"):
+        validate_review_manifest(cases, manifest, dataset_path=PILOT_DATASET_PATH)
+
+
+def test_manifest_rejects_cases_that_differ_from_hashed_file() -> None:
+    cases = load_pilot_dataset()
+    changed = (replace(cases[0], player_utterance="검사할 파일과 다른 발화"), *cases[1:])
+    with pytest.raises(DatasetValidationError, match="match.*dataset"):
+        validate_review_manifest(changed, load_review_manifest(), dataset_path=PILOT_DATASET_PATH)
+
+
+def test_shipped_expansion_is_balanced_isolated_and_bound_to_review_manifests() -> None:
+    directory = PILOT_DATASET_PATH.parent
+    train = load_dataset(directory / "train_180.jsonl")
+    validation = load_dataset(directory / "val_60.jsonl")
+    summaries = validate_train_validation_datasets(train, validation)
+    assert summaries["train"].action_counts == {action.value: 30 for action in ActionType}
+    assert summaries["validation"].action_counts == {action.value: 10 for action in ActionType}
+    assert train[:60] == tuple(replace(case, split="train") for case in load_pilot_dataset())
+    assert prepare_training_cases(train) == train
+    groups = json.loads((directory / "expression_groups.json").read_text(encoding="utf-8"))
+    report = json.loads((directory / "expansion_shortcut_baselines.json").read_text(encoding="utf-8"))
+    for name, cases, filename, batch_count in [
+        ("train", train, "train_180", 9),
+        ("validation", validation, "val_60", 3),
+    ]:
+        manifest = load_review_manifest(directory / f"{filename}_review_batches.json")
+        validate_review_manifest(cases, manifest, dataset_path=directory / f"{filename}.jsonl")
+        assert len(manifest["batches"]) == batch_count
+        assert {case.review_status for case in cases} == {"user_approved"}
+        assert report[name]["dataset_sha256"] == manifest["dataset_sha256"]
+        for key, scores in [
+            ("policies", evaluate_shortcut_baselines(cases)),
+            ("required_patterns", evaluate_shortcut_patterns(cases)),
+        ]:
+            assert report[name][key] == {
+                policy: {"correct": score.correct, "total": score.total, "accuracy": score.accuracy}
+                for policy, score in scores.items()
+            }
+            assert all(score.accuracy < 1.0 for score in scores.values())
+        for case in cases:
+            assert groups["groups"][case.expression_group]["split"] == name
+            prompt = build_model_prompt(case)
+            changed_answers = replace(
+                case, player_intent="PRIVATE_INTENT", reference_dialogue="PRIVATE_DIALOGUE",
+                ground_truth_action=ActionType.OTHER, expression_group="PRIVATE_GROUP",
+                shortcut_tags=(), review_status="ai_approved",
+            )
+            assert build_model_prompt(changed_answers) == prompt
+            assert set(json.loads(prompt)) == {
+                "character_persona", "rules", "server_state", "player_utterance",
+            }

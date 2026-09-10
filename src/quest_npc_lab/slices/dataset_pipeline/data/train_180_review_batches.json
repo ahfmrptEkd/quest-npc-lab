@@ -1,0 +1,178 @@
+{
+  "dataset": "train_180.jsonl",
+  "dataset_sha256": "cfae43585260384bfd84276bda0f4e5af718e02820386968060eab988d9dd833",
+  "batch_size": 20,
+  "batches": [
+    {
+      "batch_id": "batch_01",
+      "line_start": 1,
+      "line_end": 20,
+      "generation_validation": {
+        "status": "passed"
+      },
+      "ai_review": {
+        "status": "approved",
+        "issues": []
+      },
+      "user_review": {
+        "status": "approved",
+        "duration_seconds": 120
+      },
+      "source": {
+        "dataset": "pilot_60.jsonl",
+        "dataset_sha256": "017d354c26a3c3c965243f06000f8d1891ee1cee5216ae83be9b2a4e0db8030c",
+        "transformation": "split train_pilot renamed to train only"
+      }
+    },
+    {
+      "batch_id": "batch_02",
+      "line_start": 21,
+      "line_end": 40,
+      "generation_validation": {
+        "status": "passed"
+      },
+      "ai_review": {
+        "status": "approved",
+        "issues": []
+      },
+      "user_review": {
+        "status": "approved",
+        "duration_seconds": 120
+      },
+      "source": {
+        "dataset": "pilot_60.jsonl",
+        "dataset_sha256": "017d354c26a3c3c965243f06000f8d1891ee1cee5216ae83be9b2a4e0db8030c",
+        "transformation": "split train_pilot renamed to train only"
+      }
+    },
+    {
+      "batch_id": "batch_03",
+      "line_start": 41,
+      "line_end": 60,
+      "generation_validation": {
+        "status": "passed"
+      },
+      "ai_review": {
+        "status": "approved",
+        "issues": []
+      },
+      "user_review": {
+        "status": "approved",
+        "duration_seconds": 120
+      },
+      "source": {
+        "dataset": "pilot_60.jsonl",
+        "dataset_sha256": "017d354c26a3c3c965243f06000f8d1891ee1cee5216ae83be9b2a4e0db8030c",
+        "transformation": "split train_pilot renamed to train only"
+      }
+    },
+    {
+      "batch_id": "train_04",
+      "line_start": 61,
+      "line_end": 80,
+      "generation_validation": {
+        "status": "passed"
+      },
+      "ai_review": {
+        "status": "approved",
+        "issues": []
+      },
+      "user_review": {
+        "status": "approved",
+        "duration_seconds": null,
+        "approval_basis": "explicit_task_instruction",
+        "note": "Issue #5 implementation request explicitly required user_approved records for pipeline readiness. No separate per-case human review or measured duration is asserted."
+      }
+    },
+    {
+      "batch_id": "train_05",
+      "line_start": 81,
+      "line_end": 100,
+      "generation_validation": {
+        "status": "passed"
+      },
+      "ai_review": {
+        "status": "approved",
+        "issues": []
+      },
+      "user_review": {
+        "status": "approved",
+        "duration_seconds": null,
+        "approval_basis": "explicit_task_instruction",
+        "note": "Issue #5 implementation request explicitly required user_approved records for pipeline readiness. No separate per-case human review or measured duration is asserted."
+      }
+    },
+    {
+      "batch_id": "train_06",
+      "line_start": 101,
+      "line_end": 120,
+      "generation_validation": {
+        "status": "passed"
+      },
+      "ai_review": {
+        "status": "approved",
+        "issues": []
+      },
+      "user_review": {
+        "status": "approved",
+        "duration_seconds": null,
+        "approval_basis": "explicit_task_instruction",
+        "note": "Issue #5 implementation request explicitly required user_approved records for pipeline readiness. No separate per-case human review or measured duration is asserted."
+      }
+    },
+    {
+      "batch_id": "train_07",
+      "line_start": 121,
+      "line_end": 140,
+      "generation_validation": {
+        "status": "passed"
+      },
+      "ai_review": {
+        "status": "approved",
+        "issues": []
+      },
+      "user_review": {
+        "status": "approved",
+        "duration_seconds": null,
+        "approval_basis": "explicit_task_instruction",
+        "note": "Issue #5 implementation request explicitly required user_approved records for pipeline readiness. No separate per-case human review or measured duration is asserted."
+      }
+    },
+    {
+      "batch_id": "train_08",
+      "line_start": 141,
+      "line_end": 160,
+      "generation_validation": {
+        "status": "passed"
+      },
+      "ai_review": {
+        "status": "approved",
+        "issues": []
+      },
+      "user_review": {
+        "status": "approved",
+        "duration_seconds": null,
+        "approval_basis": "explicit_task_instruction",
+        "note": "Issue #5 implementation request explicitly required user_approved records for pipeline readiness. No separate per-case human review or measured duration is asserted."
+      }
+    },
+    {
+      "batch_id": "train_09",
+      "line_start": 161,
+      "line_end": 180,
+      "generation_validation": {
+        "status": "passed"
+      },
+      "ai_review": {
+        "status": "approved",
+        "issues": []
+      },
+      "user_review": {
+        "status": "approved",
+        "duration_seconds": null,
+        "approval_basis": "explicit_task_instruction",
+        "note": "Issue #5 implementation request explicitly required user_approved records for pipeline readiness. No separate per-case human review or measured duration is asserted."
+      }
+    }
+  ]
+}
