@@ -13,6 +13,7 @@ wheels/
 /docs/report-*.md
 /docs/agents/workflow.md
 .pi/
+.worktrees/
 
 # Secrets
 .env
