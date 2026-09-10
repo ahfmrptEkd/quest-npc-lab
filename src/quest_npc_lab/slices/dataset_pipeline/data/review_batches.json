@@ -1,0 +1,31 @@
+{
+  "dataset": "pilot_60.jsonl",
+  "dataset_sha256": "3d6f622c57498e73ab45d9cb292194feb8790057b82adfda0b6ba78b437d8e53",
+  "batch_size": 20,
+  "batches": [
+    {
+      "batch_id": "batch_01",
+      "line_start": 1,
+      "line_end": 20,
+      "generation_validation": {"status": "passed"},
+      "ai_review": {"status": "approved", "issues": []},
+      "user_review": {"status": "pending", "duration_seconds": null}
+    },
+    {
+      "batch_id": "batch_02",
+      "line_start": 21,
+      "line_end": 40,
+      "generation_validation": {"status": "passed"},
+      "ai_review": {"status": "approved", "issues": []},
+      "user_review": {"status": "pending", "duration_seconds": null}
+    },
+    {
+      "batch_id": "batch_03",
+      "line_start": 41,
+      "line_end": 60,
+      "generation_validation": {"status": "passed"},
+      "ai_review": {"status": "approved", "issues": []},
+      "user_review": {"status": "pending", "duration_seconds": null}
+    }
+  ]
+}
