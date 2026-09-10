@@ -1,0 +1,27 @@
+{
+  "split": "final_eval",
+  "assignment_stage": "before remaining synthesis; overlapping draft families reassigned after train/validation inspection",
+  "groups": {
+    "eval-ledger-columns": "장부의 칸과 기입 위치로 요청 대상을 지정하는 표현",
+    "eval-nested-aside": "괄호 안의 부연과 괄호 밖 요청의 적용 범위를 해석하는 표현",
+    "eval-countdown": "셋 둘 하나 카운트다운 도중 또는 직후 최종 의사를 확정하는 표현",
+    "eval-conditional-route": "조건과 처리 경로를 순서로 제시하는 표현",
+    "eval-counter-role": "접수 창구 역할극이나 담당자 권한으로 요청하는 표현",
+    "eval-audit-margin": "검산 메모와 증빙 주석 형식의 표현",
+    "eval-procedural-loop": "반복 및 종료 조건으로 요청을 지정하는 표현",
+    "eval-word-definition": "이번 발화 안에서 업무 별칭의 뜻을 정의하고 적용하는 표현",
+    "eval-double-negation": "이중 부정의 범위를 풀어 요청 의사를 해석하는 표현",
+    "eval-analogy": "비유 후 실제 요청 범위를 풀어서 지정하는 표현"
+  },
+  "reassigned_draft_groups": {
+    "eval-checkbox-form": "eval-nested-aside",
+    "eval-quoted-correction": "eval-countdown",
+    "eval-queue-slip": "eval-procedural-loop",
+    "eval-contrast-focus": "eval-word-definition",
+    "eval-telegraph": "eval-double-negation"
+  },
+  "pre_freeze_review_reassignments": {
+    "eval-003": "eval-double-negation",
+    "eval-021": "eval-countdown"
+  }
+}

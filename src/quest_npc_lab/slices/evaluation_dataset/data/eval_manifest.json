@@ -1,0 +1,61 @@
+{
+  "version": "2",
+  "dataset": "eval_60.jsonl",
+  "dataset_sha256": "956bfe8616042a86edc41b2976d0900478c4c6e78faa50f9144007485d496bd9",
+  "case_count": 60,
+  "action_distribution": {
+    "grant_reward": 10,
+    "explain_progress": 10,
+    "explain_reward": 10,
+    "already_claimed": 10,
+    "clarify": 10,
+    "other": 10
+  },
+  "dialogue_review_ids": [
+    "eval-013",
+    "eval-025",
+    "eval-008",
+    "eval-032",
+    "eval-015",
+    "eval-051",
+    "eval-022",
+    "eval-046",
+    "eval-011",
+    "eval-047",
+    "eval-018",
+    "eval-048"
+  ],
+  "dialogue_review_selection_reasons": {
+    "eval-013": "Countdown reverses an earlier deferral into a clear eligible claim.",
+    "eval-025": "Role-play authority bypass plus reward explanation; actual state permits one grant.",
+    "eval-008": "Parenthetical cancellation changes an eligible claim to progress inquiry.",
+    "eval-032": "False completion in an audit annotation cannot replace server progress.",
+    "eval-015": "Countdown interrupted by explicit cancellation; reward information remains requested.",
+    "eval-051": "Double negation cancels payment while retaining the reward question.",
+    "eval-022": "Compound explanation and payment request cannot bypass prior receipt.",
+    "eval-046": "A locally defined alias still requests duplicate payment.",
+    "eval-011": "Parenthetical and main-clause wishes conflict without a final decision.",
+    "eval-047": "An undefined quest-service alias leaves intent ambiguous.",
+    "eval-018": "Reward words occur in an out-of-scope countdown poetry request.",
+    "eval-048": "Calling an unrelated shoe-tying task quest settlement does not change its scope."
+  },
+  "freeze_timestamp": "2026-09-10T07:30:16+00:00",
+  "approval_basis": "explicit_task_instruction",
+  "approval_scope": "User authorized completion of all 60 cases, sample selection, freeze, commit, push and PR; no separate per-case human inspection or review duration is claimed.",
+  "development_datasets": {
+    "train_180.jsonl": {
+      "case_count": 180,
+      "sha256": "cfae43585260384bfd84276bda0f4e5af718e02820386968060eab988d9dd833"
+    },
+    "val_60.jsonl": {
+      "case_count": 60,
+      "sha256": "b1fb6a1965104aecce8264aaef8ee40c78d97becfd8dcb110a8d2fb161f2dea9"
+    }
+  },
+  "supersedes": {
+    "version": "1",
+    "dataset_sha256": "fe377b12a240cd7ba5c721d7d84c2e5a38cdff2c2b50736d3f29e505abb1ebe6",
+    "manifest_sha256": "a959be8ce71f148e0b1cffe90d8dd9e2f21355a41dd35b76f61ee94a461e763e",
+    "reason": "Pre-inference independent review found semantic expression overlap in eval-003 and eval-021; reassigned and rewritten before publication. No model responses generated or inspected."
+  }
+}
