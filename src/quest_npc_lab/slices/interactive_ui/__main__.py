@@ -18,10 +18,18 @@ def main():
     parser.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto")
     parser.add_argument("--model-id", default=ModelSettings.model_id)
     parser.add_argument("--revision", default=ModelSettings.revision)
-    parser.add_argument("--max-new-tokens", type=int, default=256)
-    parser.add_argument("--sft-checkpoint", help="Local PEFT adapter directory")
     parser.add_argument(
-        "--grpo-checkpoint", help="Local SFT+GRPO PEFT adapter directory"
+        "--max-new-tokens", type=int, default=ModelSettings.max_new_tokens
+    )
+    parser.add_argument(
+        "--sft-checkpoint",
+        default="artifacts/sft_checkpoint",
+        help="Local PEFT adapter directory",
+    )
+    parser.add_argument(
+        "--grpo-checkpoint",
+        default="artifacts/grpo_checkpoint",
+        help="Local SFT+GRPO PEFT adapter directory",
     )
     args = parser.parse_args()
     if not 0 <= args.port <= 65535 or args.max_new_tokens < 1:

@@ -11,7 +11,7 @@ class ModelSettings:
     model_id: str = "Qwen/Qwen2.5-0.5B-Instruct"
     revision: str = "7ae557604adf67be50417f59c2c2f167def9a775"
     device: str = "auto"
-    max_new_tokens: int = 256
+    max_new_tokens: int = 128
     do_sample: bool = False
 
     def __post_init__(self):

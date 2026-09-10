@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="한국어 퀘스트 NPC의 실제 저장 응답 240개: 프롬프트, SFT, GRPO 비교 연구">
+  <title>Quest NPC Lab · 실험 기록</title>
+  <link rel="icon" href="media/default.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#explorer">결과 탐색으로 이동</a>
+<header>
+  <p class="eyebrow">QUEST NPC LAB / EXPERIMENT 01</p>
+  <h1>말은 자연스러워도,<br>판단은 정확할까?</h1>
+  <p class="lead">한국어 길드 접수원이 플레이어의 요청과 서버 상태를 함께 읽는 실험.<br>프롬프트 개선 → LoRA SFT → GRPO, 같은 60문항으로 비교했습니다.</p>
+  <p class="notice"><strong>저장된 실제 실험 출력 / Saved real outputs</strong><br>240개 원본 응답을 탐색합니다. 여기서는 새 추론을 실행하지 않습니다.</p>
+  <nav aria-label="연구 자료"><a href="#explorer">응답 비교</a><a href="#analysis">실패 분석</a><a href="#reproduction">자료와 재현</a></nav>
+</header>
+<main>
+  <section aria-labelledby="results-title">
+    <h2 id="results-title">하나의 평가셋, 네 가지 조건</h2>
+    <div class="table-scroll"><table><caption>서버 개입 전 행동 정확도 · 각 조건 60건</caption><thead><tr><th scope="col">조건</th><th scope="col">정답</th><th scope="col">정확도</th><th scope="col">형식 오류</th></tr></thead><tbody id="metrics"></tbody></table></div>
+    <p id="delta"></p>
+    <p>단일 seed 42 · 평가 60건 · greedy · 최대 128 tokens · 재시도 없음. 관측된 차이는 탐색적 결과이며 안정적인 개선이나 대사 품질을 입증하지 않습니다.</p>
+    <div id="warnings" class="notice"></div>
+  </section>
+  <section id="explorer" aria-labelledby="explorer-title">
+    <p class="eyebrow">THE RESPONSE ARCHIVE</p><h2 id="explorer-title">같은 요청을 나란히 읽기</h2>
+    <div class="controls">
+      <label>정답 행동<select id="action"><option value="">모든 행동</option></select></label>
+      <label>저장 사례<select id="case"></select></label>
+      <button id="previous" type="button">이전 사례</button><button id="next" type="button">다음 사례</button>
+    </div>
+    <p id="status" role="status">저장 결과를 불러오는 중…</p>
+    <div id="input"></div><div id="comparison" class="comparison"></div>
+    <p>각 조건은 같은 시작 상태의 독립 사본을 사용합니다. 서버 승인은 상태 전이의 허용 여부이며 행동 정답과 다릅니다. 미소는 실제 지급 승인에만 연결됩니다. 초상화는 사전 제작 SVG입니다.</p>
+  </section>
+  <section id="analysis" aria-labelledby="analysis-title">
+    <h2 id="analysis-title">실패도 결과의 일부</h2>
+    <p>행동 정확도와 JSON 형식은 별개입니다. 아래 표의 패턴 태그는 중복될 수 있습니다. 개별 오류는 사례 비교와 전체 보고서에서 확인할 수 있습니다.</p>
+    <label>분석 조건<select id="analysis-condition"></select></label>
+    <div class="table-scroll"><table><caption>편법 패턴별 정확도</caption><thead><tr><th scope="col">패턴</th><th scope="col">정답 / 건수</th><th scope="col">형식 오류</th></tr></thead><tbody id="patterns"></tbody></table></div>
+    <p>대사 품질: 각 기준 24건은 사람 평가 대기, 형식 오류 24건은 평가 불가입니다. AI가 사람의 최종 판정을 대신하지 않았습니다.</p>
+  </section>
+  <section id="reproduction" aria-labelledby="reproduction-title">
+    <h2 id="reproduction-title">원본부터 다시 계산하기</h2>
+    <ul id="artifact-links"></ul>
+    <p><a href="https://github.com/ahfmrptEkd/quest-npc-lab#reproduction">설치 · 로컬 실제 추론 · 학습 재현 안내</a></p>
+    <pre>uv run pytest
+uv run python -m quest_npc_lab.slices.final_evaluation --recompute
+uv run python -m quest_npc_lab.slices.interactive_ui</pre>
+    <p>자유 입력 실제 추론은 로컬 UI와 <a href="https://github.com/ahfmrptEkd/quest-npc-lab/tree/main/src/quest_npc_lab/slices/public_showcase/spaces">Spaces 배포 번들</a>에서 제공합니다. 공개 Spaces 주소와 ZeroGPU 검증은 배포 후 기록합니다.</p>
+  </section>
+</main>
+<footer>Quest NPC Lab · 서버 상태를 신뢰하고, 모델의 실패를 보존합니다.</footer>
+<noscript>사례 비교에는 JavaScript가 필요합니다. <a href="artifacts/final_evaluation_report.json">평가 보고서</a>와 <a href="artifacts/final_240_responses.jsonl">240개 원본 응답</a>은 바로 내려받을 수 있습니다.</noscript>
+</body>
+</html>
