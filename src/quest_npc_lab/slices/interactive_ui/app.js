@@ -7,6 +7,14 @@ const errorBox = document.querySelector('#error');
 const progress = document.querySelector('#progress');
 const utterance = document.querySelector('#utterance');
 let busy = false;
+const mediaViews = [];
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const pauseMedia = document.querySelector("#pause-media");
+function syncMotion() {
+  for (const view of mediaViews) view.setMotion(!reducedMotion.matches && !pauseMedia.checked);
+}
+reducedMotion.addEventListener("change", syncMotion);
+pauseMedia.addEventListener("change", syncMotion);
 
 function element(tag, text, className) {
   const node = document.createElement(tag);
@@ -41,10 +49,15 @@ function render(data) {
   document.querySelector('#mode').textContent = data.mode === 'offline'
     ? 'OFFLINE / 결정적 테스트 대역 · 실제 모델 추론이 아닙니다. 기반 조건만 테스트 응답을 표시합니다.'
     : 'LIVE / 로컬 모델 추론 · 첫 요청은 모델 로딩으로 시간이 걸릴 수 있습니다.';
+  for (const view of mediaViews) view.dispose();
+  mediaViews.length = 0;
   results.replaceChildren();
   for (const condition of data.conditions) {
     const card = element('article', '', 'condition');
     card.append(element('h3', condition.label));
+    const portrait = createReactionMedia(condition.reaction);
+    mediaViews.push(portrait);
+    card.append(portrait.node);
     card.append(element('p', condition.evaluation_label, 'unrated'));
     const ready = condition.status === 'ready';
     card.append(element('p', ready ? '실행 가능' : '미준비 / Checkpoint not ready', 'availability'));
@@ -83,6 +96,7 @@ function render(data) {
     }
     results.append(card);
   }
+  syncMotion();
 }
 
 async function run(path, payload) {

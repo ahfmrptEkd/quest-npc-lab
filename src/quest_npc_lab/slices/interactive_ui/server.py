@@ -6,12 +6,15 @@ import json
 from pathlib import Path
 from threading import RLock
 
+from quest_npc_lab.slices.reaction_media import read_asset
+
 from .interactive_ui import ComparisonApp
 
 MAX_BODY_BYTES = 32_768
 ASSETS = {
     "/": ("index.html", "text/html; charset=utf-8"),
     "/app.js": ("app.js", "text/javascript; charset=utf-8"),
+    "/reaction-media.js": ("../reaction_media/reaction-media.js", "text/javascript; charset=utf-8"),
     "/style.css": ("style.css", "text/css; charset=utf-8"),
 }
 
@@ -91,6 +94,12 @@ def make_server(app: ComparisonApp, *, port: int = 8000) -> ThreadingHTTPServer:
                 self._send(
                     200, (Path(__file__).parent / name).read_bytes(), content_type
                 )
+            elif self.path.startswith("/media/"):
+                asset = read_asset(self.path)
+                if asset is None:
+                    self._send(404, {"error": "Media not found"})
+                else:
+                    self._send(200, *asset)
             elif self.path == "/api/session":
                 with lock:
                     session_id = self._session()

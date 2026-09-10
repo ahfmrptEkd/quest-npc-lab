@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "generation": {
+    "method": "AI-assisted original SVG source; deterministic offline Python generator",
+    "reference": "No external reference image or real person; original fictional character",
+    "fallback_reason": "No paid API key supplied; authorized static expression fallback",
+    "paid_requests": 0,
+    "confirmed_cost_usd": 0,
+    "external_transfers": 0,
+    "request_log": [],
+    "h3_limits": {
+      "max_usd": 5,
+      "max_requests_including_retries": 10
+    },
+    "video_status": "Not generated; pricing, account and publication checks deferred until paid generation is authorized"
+  },
+  "assets": {
+    "default": {
+      "image": "default.svg",
+      "video": null,
+      "license": "CC0-1.0",
+      "provenance": "Original vector artwork created for Quest NPC Lab; no third-party assets",
+      "method": "generate_portraits.py; shared geometry, expression-specific brows and closed mouth"
+    },
+    "thinking": {
+      "image": "thinking.svg",
+      "video": null,
+      "license": "CC0-1.0",
+      "provenance": "Original vector artwork created for Quest NPC Lab; no third-party assets",
+      "method": "generate_portraits.py; shared geometry, expression-specific brows and closed mouth"
+    },
+    "firm": {
+      "image": "firm.svg",
+      "video": null,
+      "license": "CC0-1.0",
+      "provenance": "Original vector artwork created for Quest NPC Lab; no third-party assets",
+      "method": "generate_portraits.py; shared geometry, expression-specific brows and closed mouth"
+    },
+    "smiling": {
+      "image": "smiling.svg",
+      "video": null,
+      "license": "CC0-1.0",
+      "provenance": "Original vector artwork created for Quest NPC Lab; no third-party assets",
+      "method": "generate_portraits.py; shared geometry, expression-specific brows and closed mouth"
+    }
+  }
+}

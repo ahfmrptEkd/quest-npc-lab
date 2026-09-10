@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Quest NPC Lab · 응답 비교</title>
   <link rel="stylesheet" href="/style.css">
+  <script src="/reaction-media.js" defer></script>
   <script src="/app.js" defer></script>
 </head>
 <body>
@@ -38,6 +39,8 @@
     <section aria-labelledby="results-title"><h2 id="results-title">03 / 조건별 결과</h2>
       <p>자유 입력은 정답이 없어 <strong>미채점 / Unrated</strong>입니다. 서버 승인은 상태 변경 규칙의 통과 여부이며, 요청 의도에 맞는 정답이라는 뜻이 아닙니다.</p>
       <p>각 조건의 ‘이 상태로 다음 턴’은 카드에 표시된 서버 상태와 위 발화를 사용합니다. 편집한 공통 상태는 ‘비교 실행’에만 적용됩니다.</p>
+      <p>AI 보조로 제작한 정적 표정 초상화입니다. 실시간 영상 생성이나 립싱크가 아닙니다.</p>
+      <div class="check"><input id="pause-media" type="checkbox"><label for="pause-media">움직임 정지 · 정적 초상화 사용</label></div>
       <div id="results" class="results"></div>
     </section>
     <footer>로컬 단일 응답 실험 · 학습 효과와 장기 대화 능력을 이 화면만으로 입증하지 않습니다.</footer>
