@@ -5,6 +5,8 @@ from secrets import token_urlsafe
 import json
 from pathlib import Path
 
+from quest_npc_lab.slices.reaction_media import reaction_media, reaction_state
+
 from .inference import ModelSettings, checkpoint_ready, local_generator
 
 from quest_npc_lab.slices.guild_receptionist import (
@@ -99,6 +101,7 @@ class ComparisonApp:
                     "status": "ready" if key in self.models else "checkpoint_not_ready",
                     "state": asdict(session.states[key]),
                     "artifact": session.artifacts.get(key),
+                    "reaction": reaction_media(reaction_state(session.artifacts.get(key))),
                     "evaluation_label": "미채점 / Unrated",
                     "model": asdict(self.settings)
                     | {
