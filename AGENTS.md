@@ -5,12 +5,15 @@ scope and approval gates. Research proposals do not override those decisions.
 
 ## Git workflow
 
-- Never push or commit directly to `main`. All changes landing in `main` must
-  arrive via pull requests.
-- Subagents and workflows working on implementation tickets or parallelizable
-  tasks must use dedicated `git worktree` instances on short-lived branches
-  instead of working in the root workspace. PR merges between worktrees or
-  feature branches are permitted.
+- Never push implementation commits directly to `main`. All implementation
+  changes landing in `main` must arrive via pull requests.
+- When delegating implementation tickets or parallel tasks to subagents or
+  workflows, each worker must operate in a dedicated `git worktree` on a
+  short-lived branch (e.g. `.worktrees/<branch>`) rather than mutating the root
+  workspace.
+- PR merges between worktrees or intermediate feature branches are permitted.
+- Clean up temporary worktrees (`git worktree remove`) after the branch is pushed
+  or merged.
 - After each coherent, approved task, verify the change and review the staged
   diff for unintended files, personal information, and secrets. Then commit
   and push without requesting separate permission for those Git operations.
