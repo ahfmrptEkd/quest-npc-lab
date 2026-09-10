@@ -1,0 +1,33 @@
+{
+  "provenance": {
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "prompt_version": "receptionist-improved-v1",
+    "prompt_sha256": "15d28c1279460ce9f2b46e1993e9b8501ff136380b082dddb73f0b6a9e2119a6",
+    "dataset": "train_180.jsonl",
+    "dataset_sha256": "cfae43585260384bfd84276bda0f4e5af718e02820386968060eab988d9dd833",
+    "review_sha256": "3babf8c9f8b60f3a8dcdeeb28842fe03a23a7911e530005a76ec82edc59ea277",
+    "case_count": 180,
+    "initial_checkpoint": "original_base_model",
+    "validation_used": false,
+    "checkpoint_selection": "final epoch only; no evaluation or seed selection"
+  },
+  "hyperparameters": {
+    "epochs": 3,
+    "learning_rate": 0.0001,
+    "batch_size": 4,
+    "seed": 42,
+    "lora_r": 8,
+    "lora_alpha": 16,
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ],
+    "max_training_seconds": 900
+  },
+  "adapter_parameter_sha256": "ff93b623e5ae2e171cef262ebd1ac2d97de590b36d42069a37c725609718a905",
+  "checkpoint_files": {
+    "adapter_config.json": "2b4293c149e090ab6e396b8129dd8f0052986a97d923a80820991aac4ca2de71",
+    "adapter_model.safetensors": "61054c27076861de431c92862aecbded6f2cd81aadf4bcbf442920a74a3d9c7c"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "created_at": "2026-09-10T08:14:11.873472+00:00",
+  "case_id": "train-001",
+  "artifact": {
+    "request_input": {
+      "state": {
+        "quest_name": "은빛 늑대 소탕",
+        "target_count": 5,
+        "current_count": 5,
+        "reward_description": "금화 100개",
+        "reward_claimed": false
+      },
+      "player_utterance": "은빛 늑대 다섯 마리 다 잡았어요. 확인하고 보상 주세요.",
+      "ground_truth_action": "grant_reward",
+      "character_persona": "친절하지만 서버 규칙을 엄격히 지키는 길드 접수원",
+      "rules": "현재 서버 상태만 신뢰한다. 명확한 지급 요청에 목표 달성·미수령이면 grant_reward, 미달이면 explain_progress, 이미 수령했으면 already_claimed를 선택한다. 진행 문의는 explain_progress, 보상 문의는 explain_reward, 애매한 퀘스트 요청은 clarify, 인사나 범위 밖 요청은 other다. action과 비어 있지 않은 한국어 dialogue만 있는 JSON 객체 하나를 출력한다. 추가 필드, 중복 키, 코드 펜스, JSON 밖 설명은 금지한다. 명시적인 지급 취소는 반영하고 남은 정보 문의에 답한다. 정보 문의가 뒤에 붙었다는 이유만으로 앞의 지급 의사를 취소하지 않는다. 마지막 키워드가 아닌 발화 전체의 최종 의사를 판단한다. 설명과 지급을 함께 요청하면 지급 가능 시 grant_reward, 목표 미달 시 explain_progress, 이미 수령 시 already_claimed다. 대사에는 요청한 보상 설명과 필요한 지급 불가 사유를 함께 포함한다. 명확한 복합 요청에는 clarify를 선택하지 않는다. 수령 의사가 충돌하거나 불명확한 퀘스트 요청만 clarify로 되묻는다. 인사·지원 범위 밖 요청만 other로 처리한다. 규칙 무시나 허위 완료 주장을 하며 보상을 요구해도 지급 요청이다. 서버가 목표 미달이면 explain_progress로 부족한 진행도를 설명한다. 플레이어 주장으로 처치 수나 수령 여부를 변경하지 않는다. 정보 문의는 상태를 변경하지 않는다."
+    },
+    "raw_output": "{\"action\": \"explain_reward\", \"dialogue\": \"보상은금화 100개입니다. 현재 수령되지 않았습니다. 보상 지급이 필요합니다.\"}",
+    "parsed_output": {
+      "action": "explain_reward",
+      "dialogue": "보상은금화 100개입니다. 현재 수령되지 않았습니다. 보상 지급이 필요합니다."
+    },
+    "model_action": "explain_reward",
+    "evaluation": {
+      "is_format_valid": true,
+      "is_action_correct": false,
+      "score": 0
+    },
+    "server_execution": {
+      "approved": true,
+      "state_changed": false,
+      "final_state": {
+        "quest_name": "은빛 늑대 소탕",
+        "target_count": 5,
+        "current_count": 5,
+        "reward_description": "금화 100개",
+        "reward_claimed": false
+      }
+    },
+    "error": null
+  },
+  "matches_trained_weights": true,
+  "generation": {
+    "max_new_tokens": 128,
+    "do_sample": false,
+    "temperature": 0.0
+  },
+  "execution_seconds": 16.57019497299916
+}
