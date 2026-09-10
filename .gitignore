@@ -1,0 +1,31 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Local-only notes and agent files
+/docs/report-*.md
+.pi/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local model weights, training output, and caches
+/models/
+/checkpoints/
+/outputs/
+*.safetensors
+*.pt
+*.pth
+.pytest_cache/
+.ruff_cache/
