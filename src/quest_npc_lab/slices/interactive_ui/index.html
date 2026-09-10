@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quest NPC Lab · 응답 비교</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#quest-name">입력으로 이동</a>
+  <main>
+    <header><p class="eyebrow">QUEST NPC LAB / LOCAL EXPERIMENT</p>
+      <h1>같은 요청, 네 가지 응답.</h1>
+      <p>길드 접수원의 모델 선택과 서버 처리를 나란히 확인하세요.</p>
+      <p id="mode" class="notice">서버 연결 중…</p>
+    </header>
+    <form id="comparison">
+      <fieldset id="controls" disabled>
+        <legend>01 / 공통 시작 상태</legend>
+        <p id="state-help">비교 실행은 아래 상태의 독립 사본으로 모든 조건을 다시 시작합니다.</p>
+        <div class="fields">
+          <div><label for="quest-name">퀘스트 이름</label><input id="quest-name" maxlength="200" required value="슬라임 토벌"></div>
+          <div><label for="target-count">목표 수</label><input id="target-count" type="number" min="1" step="1" required value="5"></div>
+          <div><label for="current-count">현재 수</label><input id="current-count" type="number" min="0" step="1" required value="5"></div>
+          <div><label for="reward-description">보상 내용</label><input id="reward-description" maxlength="500" required value="금화 100개"></div>
+        </div>
+        <div class="check"><input id="reward-claimed" type="checkbox" aria-describedby="claimed-help"><label for="reward-claimed">보상 수령 완료</label></div>
+        <p id="claimed-help" class="hint">현재 수가 목표 이상일 때만 수령 완료를 선택할 수 있습니다. 목표 초과는 허용됩니다.</p>
+        <label for="utterance">02 / 플레이어 자유 발화</label>
+        <textarea id="utterance" maxlength="2000" rows="3" required placeholder="예: 보상 줘. 아니, 얼마인지만 알려줘." aria-describedby="turn-help"></textarea>
+        <p id="turn-help">서버 상태는 조건별로 다음 턴까지 유지됩니다. 이전 대화 이력은 모델에 전달하지 않으며, 현재 상태와 현재 발화만 사용합니다.</p>
+        <button id="compare" type="submit">같은 상태로 비교 실행</button>
+      </fieldset>
+    </form>
+    <p id="error" role="alert" tabindex="-1" hidden></p>
+    <p id="progress" role="status" aria-live="polite"></p>
+    <section aria-labelledby="results-title"><h2 id="results-title">03 / 조건별 결과</h2>
+      <p>자유 입력은 정답이 없어 <strong>미채점 / Unrated</strong>입니다. 서버 승인은 상태 변경 규칙의 통과 여부이며, 요청 의도에 맞는 정답이라는 뜻이 아닙니다.</p>
+      <p>각 조건의 ‘이 상태로 다음 턴’은 카드에 표시된 서버 상태와 위 발화를 사용합니다. 편집한 공통 상태는 ‘비교 실행’에만 적용됩니다.</p>
+      <div id="results" class="results"></div>
+    </section>
+    <footer>로컬 단일 응답 실험 · 학습 효과와 장기 대화 능력을 이 화면만으로 입증하지 않습니다.</footer>
+  </main>
+</body>
+</html>
