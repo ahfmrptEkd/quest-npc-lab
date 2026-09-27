@@ -48,3 +48,11 @@ pretrained-adapter reference path. Actual reference tensors must equal the sourc
 SFT before and after training; only default LoRA parameters may train. This
 resource correction does not change pairs, seed, beta, optimizer, or epoch count,
 and no evaluation result was used to choose the retry.
+
+## Completed result
+
+The completed run and preserved negative result are documented in
+[`artifacts/dpo_comparison/README.md`](../artifacts/dpo_comparison/README.md).
+DPO scored 16/60 versus SFT 17/60 and GRPO 18/60; wrong-grant choices rose from
+11/50 to 21/50. No further tuning was performed. Saved metrics can be recomputed
+from the published raw responses without loading models.
