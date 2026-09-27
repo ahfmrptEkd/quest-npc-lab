@@ -1,0 +1,356 @@
+{
+  "status": "passed",
+  "source_hashes": {
+    "sft_checkpoint/adapter_config.json": "2b4293c149e090ab6e396b8129dd8f0052986a97d923a80820991aac4ca2de71",
+    "sft_checkpoint/adapter_model.safetensors": "465104119408e0610a0dd4d38cb7db3f3a8bd9f28036565013d60f232de55909",
+    "sft_checkpoint/training_metadata.json": "c10faa3b4956744fcbdfa5d0f35cd16944de225898418ce8af364e80378455bf",
+    "sft_training_report.json": "d5861ae9e3b5361559d3d40b4aba2aff0424f1bee25ffdff3ad5f38d9365ca7a",
+    "grpo_training_report.json": "fb4c5aacfd534e1f30a32926b559a3800bc1db1d59dbea8093e467e657ab57f7",
+    "grpo_training_groups.jsonl": "d47d557b8e2227a1f5d295346f31a004f6a3236885dcabcfc980ef9a9ee74b71"
+  },
+  "initial_adapter_parameter_sha256": "d44de73f16e455fbbf28c83ffb66ce31a4608b34ab4e58abd65025da922583ef",
+  "pair_count": 102,
+  "human_preferences": false,
+  "pair_source": "mixed reward groups from evolving GRPO policies",
+  "hyperparameters": {
+    "seed": 42,
+    "epochs": 1,
+    "batch_size": 2,
+    "learning_rate": 1e-05,
+    "beta": 0.1,
+    "loss": "sigmoid",
+    "max_training_seconds": 900
+  },
+  "environment": {
+    "torch": "2.14.0",
+    "trl": "1.12.0",
+    "transformers": "5.16.1",
+    "peft": "0.20.0"
+  },
+  "implementation_sha256": {
+    "runtime.py": "84629f948a6c3ba6a81527fea9fd1aa6fdcdea6654be61c94a4ece30d6288079",
+    "__init__.py": "0ce2233b4b784e4f603a5aabb7a53b7d1b4cc816e7fe9cce1ac59e099096fee8",
+    "test_dpo_training.py": "39f7b112231155ae00795bfdb7d3fda17bd8141cc34fa8f9a6dce1d532db173a",
+    "evaluation.py": "d7519328972d663b6fa403f7ebf8c1f831b55e061bb882e939cbe44b40cf3da8",
+    "__main__.py": "ddc778612294cb9cc33b17b59fe72b359d643aa6c4b09d8e4ffca606572bbd3e",
+    "dpo_training.py": "e1ecb638d8b9aa82b4d559002260cd06c35f95987b437c247f35ebd2c499617a"
+  },
+  "pairs_sha256": "0304b503eb90495b4cd76c1a2991bd5cecc9fc30a8a939df60f5d882ebda71e1",
+  "max_sequence_tokens": 2,
+  "reference_strategy": "frozen SFT ref adapter sharing a frozen base",
+  "training_seconds": 354.77943335300006,
+  "parameter_delta_norm": 0.05935553370551251,
+  "loss_trajectory": [
+    {
+      "step": 1,
+      "loss": 0.6931471824645996,
+      "seconds": 10.132899614000053
+    },
+    {
+      "step": 2,
+      "loss": 0.6945178508758545,
+      "seconds": 5.686008521000076
+    },
+    {
+      "step": 3,
+      "loss": 0.6786603331565857,
+      "seconds": 4.890082167000401
+    },
+    {
+      "step": 4,
+      "loss": 0.6935900449752808,
+      "seconds": 4.667313208999985
+    },
+    {
+      "step": 5,
+      "loss": 0.6913477182388306,
+      "seconds": 26.86687423100011
+    },
+    {
+      "step": 6,
+      "loss": 0.680513322353363,
+      "seconds": 4.815505739999935
+    },
+    {
+      "step": 7,
+      "loss": 0.7525924444198608,
+      "seconds": 5.147347738999997
+    },
+    {
+      "step": 8,
+      "loss": 0.7071254253387451,
+      "seconds": 5.792841585000133
+    },
+    {
+      "step": 9,
+      "loss": 0.7143748998641968,
+      "seconds": 24.47810898499938
+    },
+    {
+      "step": 10,
+      "loss": 0.7203809022903442,
+      "seconds": 5.627665809000064
+    },
+    {
+      "step": 11,
+      "loss": 0.7114018797874451,
+      "seconds": 5.307657498000481
+    },
+    {
+      "step": 12,
+      "loss": 0.6977601647377014,
+      "seconds": 22.68431527499979
+    },
+    {
+      "step": 13,
+      "loss": 0.7239106893539429,
+      "seconds": 5.088277979999475
+    },
+    {
+      "step": 14,
+      "loss": 0.6892750859260559,
+      "seconds": 3.988443339000696
+    },
+    {
+      "step": 15,
+      "loss": 0.7205489873886108,
+      "seconds": 4.033277964999797
+    },
+    {
+      "step": 16,
+      "loss": 0.6702404022216797,
+      "seconds": 31.802989253000305
+    },
+    {
+      "step": 17,
+      "loss": 0.7011002898216248,
+      "seconds": 30.532710650999434
+    },
+    {
+      "step": 18,
+      "loss": 0.6510480046272278,
+      "seconds": 3.569284866000089
+    },
+    {
+      "step": 19,
+      "loss": 0.6873437166213989,
+      "seconds": 4.698223643000347
+    },
+    {
+      "step": 20,
+      "loss": 0.6957053542137146,
+      "seconds": 4.979347413999676
+    },
+    {
+      "step": 21,
+      "loss": 0.6697728037834167,
+      "seconds": 4.836984671999744
+    },
+    {
+      "step": 22,
+      "loss": 0.7145109176635742,
+      "seconds": 4.719960088999869
+    },
+    {
+      "step": 23,
+      "loss": 0.6688739061355591,
+      "seconds": 5.085932693000359
+    },
+    {
+      "step": 24,
+      "loss": 0.718942403793335,
+      "seconds": 4.9472145469999305
+    },
+    {
+      "step": 25,
+      "loss": 0.6513899564743042,
+      "seconds": 3.5984527890004756
+    },
+    {
+      "step": 26,
+      "loss": 0.6689647436141968,
+      "seconds": 3.663070657999924
+    },
+    {
+      "step": 27,
+      "loss": 0.69910728931427,
+      "seconds": 5.162958134999826
+    },
+    {
+      "step": 28,
+      "loss": 0.6679297685623169,
+      "seconds": 4.936241667999639
+    },
+    {
+      "step": 29,
+      "loss": 0.6810950040817261,
+      "seconds": 5.01182359700033
+    },
+    {
+      "step": 30,
+      "loss": 0.7461774349212646,
+      "seconds": 3.7606606999997894
+    },
+    {
+      "step": 31,
+      "loss": 0.6691545248031616,
+      "seconds": 4.982502836000094
+    },
+    {
+      "step": 32,
+      "loss": 0.6995422840118408,
+      "seconds": 3.6109826100000646
+    },
+    {
+      "step": 33,
+      "loss": 0.7059471011161804,
+      "seconds": 4.961738703000265
+    },
+    {
+      "step": 34,
+      "loss": 0.7061104774475098,
+      "seconds": 5.27951083500011
+    },
+    {
+      "step": 35,
+      "loss": 0.7112255096435547,
+      "seconds": 4.743659586999456
+    },
+    {
+      "step": 36,
+      "loss": 0.675366997718811,
+      "seconds": 4.988806635000401
+    },
+    {
+      "step": 37,
+      "loss": 0.7255004048347473,
+      "seconds": 3.76600576599958
+    },
+    {
+      "step": 38,
+      "loss": 0.6822994351387024,
+      "seconds": 4.643827327000508
+    },
+    {
+      "step": 39,
+      "loss": 0.6790132522583008,
+      "seconds": 5.254823945999306
+    },
+    {
+      "step": 40,
+      "loss": 0.7129815816879272,
+      "seconds": 4.791072967000218
+    },
+    {
+      "step": 41,
+      "loss": 0.6857142448425293,
+      "seconds": 4.8318042790006075
+    },
+    {
+      "step": 42,
+      "loss": 0.6902438402175903,
+      "seconds": 4.798934567999822
+    },
+    {
+      "step": 43,
+      "loss": 0.6565806865692139,
+      "seconds": 3.6653112479998526
+    },
+    {
+      "step": 44,
+      "loss": 0.6784939765930176,
+      "seconds": 4.5756781419995605
+    },
+    {
+      "step": 45,
+      "loss": 0.6733947992324829,
+      "seconds": 3.7107062770000994
+    },
+    {
+      "step": 46,
+      "loss": 0.679847776889801,
+      "seconds": 4.832639125999776
+    },
+    {
+      "step": 47,
+      "loss": 0.6895712614059448,
+      "seconds": 3.7379152420007813
+    },
+    {
+      "step": 48,
+      "loss": 0.6839085817337036,
+      "seconds": 3.6597834939993845
+    },
+    {
+      "step": 49,
+      "loss": 0.6723518371582031,
+      "seconds": 4.622786271000223
+    },
+    {
+      "step": 50,
+      "loss": 0.6771749258041382,
+      "seconds": 4.567340343000069
+    },
+    {
+      "step": 51,
+      "loss": 0.7187574505805969,
+      "seconds": 3.9166565260002244
+    }
+  ],
+  "changed_tensor_count": 96,
+  "adapter_parameter_sha256": "c08af77e1385254ee81a8dde1843c198d10e16cbe44a8d0f531d54b188123c4c",
+  "reference_unchanged": true,
+  "checkpoint_files": {
+    "adapter_config.json": "2b4293c149e090ab6e396b8129dd8f0052986a97d923a80820991aac4ca2de71",
+    "adapter_model.safetensors": "aa0f27214aff1062a325770442a74071241fb8fce2727a63a5be9872f7b5535e"
+  },
+  "peak_cuda_memory_gb": 10.433414936065674,
+  "reload_verification": {
+    "status": "passed",
+    "case_id": "train-001",
+    "artifact": {
+      "request_input": {
+        "state": {
+          "quest_name": "은빛 늑대 소탕",
+          "target_count": 5,
+          "current_count": 5,
+          "reward_description": "금화 100개",
+          "reward_claimed": false
+        },
+        "player_utterance": "은빛 늑대 다섯 마리 다 잡았어요. 확인하고 보상 주세요.",
+        "ground_truth_action": "grant_reward",
+        "character_persona": "친절하지만 서버 규칙을 엄격히 지키는 길드 접수원",
+        "rules": "현재 서버 상태만 신뢰한다. 명확한 지급 요청에 목표 달성·미수령이면 grant_reward, 미달이면 explain_progress, 이미 수령했으면 already_claimed를 선택한다. 진행 문의는 explain_progress, 보상 문의는 explain_reward, 애매한 퀘스트 요청은 clarify, 인사나 범위 밖 요청은 other다. action과 비어 있지 않은 한국어 dialogue만 있는 JSON 객체 하나를 출력한다. 추가 필드, 중복 키, 코드 펜스, JSON 밖 설명은 금지한다. 명시적인 지급 취소는 반영하고 남은 정보 문의에 답한다. 정보 문의가 뒤에 붙었다는 이유만으로 앞의 지급 의사를 취소하지 않는다. 마지막 키워드가 아닌 발화 전체의 최종 의사를 판단한다. 설명과 지급을 함께 요청하면 지급 가능 시 grant_reward, 목표 미달 시 explain_progress, 이미 수령 시 already_claimed다. 대사에는 요청한 보상 설명과 필요한 지급 불가 사유를 함께 포함한다. 명확한 복합 요청에는 clarify를 선택하지 않는다. 수령 의사가 충돌하거나 불명확한 퀘스트 요청만 clarify로 되묻는다. 인사·지원 범위 밖 요청만 other로 처리한다. 규칙 무시나 허위 완료 주장을 하며 보상을 요구해도 지급 요청이다. 서버가 목표 미달이면 explain_progress로 부족한 진행도를 설명한다. 플레이어 주장으로 처치 수나 수령 여부를 변경하지 않는다. 정보 문의는 상태를 변경하지 않는다."
+      },
+      "raw_output": "{\"action\": \"grant_reward\", \"dialogue\": \"보상은금화 100개입니다. 현재 5마리를 지급해 드리겠습니다.\"}",
+      "parsed_output": {
+        "action": "grant_reward",
+        "dialogue": "보상은금화 100개입니다. 현재 5마리를 지급해 드리겠습니다."
+      },
+      "model_action": "grant_reward",
+      "evaluation": {
+        "is_format_valid": true,
+        "is_action_correct": true,
+        "score": 1
+      },
+      "server_execution": {
+        "approved": true,
+        "state_changed": true,
+        "final_state": {
+          "quest_name": "은빛 늑대 소탕",
+          "target_count": 5,
+          "current_count": 5,
+          "reward_description": "금화 100개",
+          "reward_claimed": true
+        }
+      },
+      "error": null
+    },
+    "matches_trained_weights": true,
+    "generation": {
+      "max_new_tokens": 128,
+      "do_sample": false,
+      "temperature": 0.0
+    }
+  }
+}

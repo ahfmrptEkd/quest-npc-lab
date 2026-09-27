@@ -1,0 +1,78 @@
+{
+  "conditions": {
+    "base_minimal": {
+      "count": 60,
+      "correct": 0,
+      "accuracy": 0.0,
+      "format_errors": 60,
+      "format_error_rate": 1.0,
+      "other_misclassifications": 0,
+      "other_denominator": 50,
+      "other_misclassification_rate": 0.0,
+      "wrong_grants": 0,
+      "wrong_grant_denominator": 50,
+      "wrong_grant_rate": 0.0
+    },
+    "base_improved": {
+      "count": 60,
+      "correct": 0,
+      "accuracy": 0.0,
+      "format_errors": 60,
+      "format_error_rate": 1.0,
+      "other_misclassifications": 0,
+      "other_denominator": 50,
+      "other_misclassification_rate": 0.0,
+      "wrong_grants": 0,
+      "wrong_grant_denominator": 50,
+      "wrong_grant_rate": 0.0
+    },
+    "sft_improved": {
+      "count": 60,
+      "correct": 17,
+      "accuracy": 0.2833333333333333,
+      "format_errors": 0,
+      "format_error_rate": 0.0,
+      "other_misclassifications": 2,
+      "other_denominator": 50,
+      "other_misclassification_rate": 0.04,
+      "wrong_grants": 11,
+      "wrong_grant_denominator": 50,
+      "wrong_grant_rate": 0.22
+    },
+    "grpo_improved": {
+      "count": 60,
+      "correct": 18,
+      "accuracy": 0.3,
+      "format_errors": 2,
+      "format_error_rate": 0.03333333333333333,
+      "other_misclassifications": 2,
+      "other_denominator": 50,
+      "other_misclassification_rate": 0.04,
+      "wrong_grants": 11,
+      "wrong_grant_denominator": 50,
+      "wrong_grant_rate": 0.22
+    },
+    "dpo_improved": {
+      "count": 60,
+      "correct": 16,
+      "accuracy": 0.26666666666666666,
+      "format_errors": 0,
+      "format_error_rate": 0.0,
+      "other_misclassifications": 8,
+      "other_denominator": 50,
+      "other_misclassification_rate": 0.16,
+      "wrong_grants": 21,
+      "wrong_grant_denominator": 50,
+      "wrong_grant_rate": 0.42
+    }
+  },
+  "dpo_raw_sha256": "3af3c1d95654575a577eaefd63168565c9235e3a077bf950cf384689b4ee9b7e",
+  "baseline_raw_sha256": "c4b0e5ad90574e10135f3a263a8ce5157d6d1639f33456efaab8987461b7a3e1",
+  "limitations": [
+    "Exploratory extension: evaluation set previously inspected.",
+    "Offline pairs selected from evolving GRPO policies; not a controlled algorithm-only comparison.",
+    "Rule-labelled action preferences, not human preferences or dialogue quality.",
+    "One fixed seed; no hyperparameter or checkpoint selection."
+  ],
+  "seconds": 245.84111847899993
+}

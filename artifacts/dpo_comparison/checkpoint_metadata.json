@@ -1,0 +1,26 @@
+{
+  "source_hashes": {
+    "sft_checkpoint/adapter_config.json": "2b4293c149e090ab6e396b8129dd8f0052986a97d923a80820991aac4ca2de71",
+    "sft_checkpoint/adapter_model.safetensors": "465104119408e0610a0dd4d38cb7db3f3a8bd9f28036565013d60f232de55909",
+    "sft_checkpoint/training_metadata.json": "c10faa3b4956744fcbdfa5d0f35cd16944de225898418ce8af364e80378455bf",
+    "sft_training_report.json": "d5861ae9e3b5361559d3d40b4aba2aff0424f1bee25ffdff3ad5f38d9365ca7a",
+    "grpo_training_report.json": "fb4c5aacfd534e1f30a32926b559a3800bc1db1d59dbea8093e467e657ab57f7",
+    "grpo_training_groups.jsonl": "d47d557b8e2227a1f5d295346f31a004f6a3236885dcabcfc980ef9a9ee74b71"
+  },
+  "initial_adapter_parameter_sha256": "d44de73f16e455fbbf28c83ffb66ce31a4608b34ab4e58abd65025da922583ef",
+  "adapter_parameter_sha256": "c08af77e1385254ee81a8dde1843c198d10e16cbe44a8d0f531d54b188123c4c",
+  "checkpoint_files": {
+    "adapter_config.json": "2b4293c149e090ab6e396b8129dd8f0052986a97d923a80820991aac4ca2de71",
+    "adapter_model.safetensors": "aa0f27214aff1062a325770442a74071241fb8fce2727a63a5be9872f7b5535e"
+  },
+  "pairs_sha256": "0304b503eb90495b4cd76c1a2991bd5cecc9fc30a8a939df60f5d882ebda71e1",
+  "hyperparameters": {
+    "seed": 42,
+    "epochs": 1,
+    "batch_size": 2,
+    "learning_rate": 1e-05,
+    "beta": 0.1,
+    "loss": "sigmoid",
+    "max_training_seconds": 900
+  }
+}
