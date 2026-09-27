@@ -1,8 +1,8 @@
 # Offline DPO exploratory comparison
 
 This slice continues **an existing SFT adapter**, preserving it, and writes a
-new DPO adapter. It does not retrain SFT. Both the trainable policy and a separate
-frozen reference start from identical SFT bytes. See `docs/dpo-comparison.md`
+new DPO adapter. It does not retrain SFT. The trainable policy adapter and a frozen reference adapter share a frozen
+base model and start from identical SFT bytes. See `docs/dpo-comparison.md`
 and issue #28 for the fixed experiment and its limitations.
 
 ```bash

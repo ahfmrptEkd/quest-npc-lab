@@ -108,25 +108,10 @@ def train(source: Path, output: Path):
             local_files_only=True,
         )
         del base
-        ref_base, _ = load_base()
-        reference = PeftModel.from_pretrained(
-            ref_base,
-            str(source / "sft_checkpoint"),
-            is_trainable=False,
-            local_files_only=True,
-        )
-        del ref_base
-        reference.requires_grad_(False)
-        reference.eval()
         before = snapshot(model)
         initial = parameter_digest(before)
-        if (
-            initial != metadata["adapter_parameter_sha256"]
-            or parameter_digest(snapshot(reference)) != initial
-        ):
-            raise ValueError(
-                "policy and frozen reference must both equal preserved SFT"
-            )
+        if initial != metadata["adapter_parameter_sha256"]:
+            raise ValueError("policy must equal preserved SFT")
         if tokenizer.pad_token_id is None:
             tokenizer.pad_token = tokenizer.eos_token
         examples = [{k: p[k] for k in ("prompt", "chosen", "rejected")} for p in pairs]
@@ -157,7 +142,7 @@ def train(source: Path, output: Path):
 
         trainer = DPOTrainer(
             model=model,
-            ref_model=reference,
+            ref_model=None,
             processing_class=tokenizer,
             train_dataset=Dataset.from_list(examples),
             callbacks=[Callback()],
@@ -187,12 +172,30 @@ def train(source: Path, output: Path):
                 disable_tqdm=True,
             ),
         )
-        if any(p.requires_grad for p in reference.parameters()):
-            raise ValueError("reference model must stay frozen")
+
+        def adapter_snapshot(adapter, target):
+            return {
+                n.replace(f".{adapter}.", ".default."): value
+                for n, value in snapshot(target).items()
+                if f".{adapter}." in n
+            }
+
+        # TRL 1.12 clones the supplied pretrained default adapter into frozen ref.
+        # Check actual tensors, rather than relying on version-dependent defaults.
+        if parameter_digest(adapter_snapshot("ref", model)) != initial:
+            raise ValueError("reference adapter must equal preserved SFT")
+        if any(
+            p.requires_grad
+            for n, p in model.named_parameters()
+            if ".ref." in n or "lora_" not in n
+        ):
+            raise ValueError("reference adapter and base model must stay frozen")
+        report["reference_strategy"] = "frozen SFT ref adapter sharing a frozen base"
+
         started = time.monotonic()
         trainer.train()
         report["training_seconds"] = time.monotonic() - started
-        after = snapshot(model)
+        after = adapter_snapshot("default", model)
         delta = math.sqrt(
             sum(float((after[n] - v).pow(2).sum()) for n, v in before.items())
         )
@@ -205,13 +208,13 @@ def train(source: Path, output: Path):
             not torch.equal(v, after[n]) for n, v in before.items()
         )
         report["adapter_parameter_sha256"] = parameter_digest(after)
-        if parameter_digest(snapshot(reference)) != initial:
+        if parameter_digest(adapter_snapshot("ref", model)) != initial:
             raise ValueError("reference adapter changed")
         if validate_source(source)[2] != hashes:
             raise ValueError("source changed during training")
         report["reference_unchanged"] = True
         checkpoint = output / "dpo_checkpoint"
-        model.save_pretrained(str(checkpoint))
+        model.save_pretrained(str(checkpoint), selected_adapters=["default"])
         report["checkpoint_files"] = {
             n: sha256(checkpoint / n)
             for n in ("adapter_config.json", "adapter_model.safetensors")
@@ -231,7 +234,7 @@ def train(source: Path, output: Path):
                 )
             },
         )
-        del trainer, model, reference
+        del trainer, model
         gc.collect()
         torch.cuda.empty_cache()
         report["reload_verification"] = reload_checkpoint(
@@ -244,7 +247,7 @@ def train(source: Path, output: Path):
         # A malformed answer is a model-quality result, not a weight reload failure.
         report["status"] = "passed"
         return report
-    except Exception as error:
+    except (Exception, KeyboardInterrupt) as error:
         report.update(status="failed", error=f"{type(error).__name__}: {error}")
         raise
     finally:

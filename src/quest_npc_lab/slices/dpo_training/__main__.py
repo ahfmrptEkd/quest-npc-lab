@@ -27,7 +27,7 @@ def main():
         report = evaluate(args.source, args.output)
         state.update(status="passed", stage="complete")
         print(json.dumps(report["conditions"], indent=2))
-    except Exception as error:
+    except (Exception, KeyboardInterrupt) as error:
         state.update(status="failed", error=f"{type(error).__name__}: {error}")
         raise
     finally:

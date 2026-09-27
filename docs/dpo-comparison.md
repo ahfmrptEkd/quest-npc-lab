@@ -37,3 +37,14 @@ remain part of this experiment. Dialogue review remains a separate human task.
 
 Pair construction and source integrity; real parameter update and checkpoint
 reload; independent raw-response metric recomputation. Preserve original tests.
+
+## Resource correction before completed DPO run
+
+The first attempt used two full base-model instances and saturated the RTX 3060
+(11,920 MiB used), with steps slowing to 15–25 seconds. It was interrupted before
+evaluation and its logs were preserved. The completed-run implementation shares
+a frozen base with separate default/ref LoRA adapters, using TRL's supported
+pretrained-adapter reference path. Actual reference tensors must equal the source
+SFT before and after training; only default LoRA parameters may train. This
+resource correction does not change pairs, seed, beta, optimizer, or epoch count,
+and no evaluation result was used to choose the retry.
