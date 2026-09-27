@@ -33,59 +33,66 @@ def checkpoint_ready(path: Path | None) -> bool:
 def local_generator(
     settings: ModelSettings, adapter: Path | None
 ) -> Callable[[str], str]:
-    """Load on first request. A failed load never substitutes the base model."""
-    # Auto factories select runtime-specific classes with different typed overloads.
-    model: Any = None
-    tokenizer: Any = None
+    """Load only for this request; never retain another condition's model."""
 
     def generate(prompt: str) -> str:
-        nonlocal model, tokenizer
+        import gc
         import torch
-        from transformers import AutoModelForCausalLM, AutoTokenizer
 
-        if model is None:
-            device = settings.device
-            if device == "auto":
-                device = "cuda" if torch.cuda.is_available() else "cpu"
-            tokenizer = cast(
-                Any,
-                AutoTokenizer.from_pretrained(
-                    settings.model_id,
-                    revision=settings.revision,
-                    local_files_only=True,
-                ),
-            )
-            loaded = cast(
-                Any,
-                AutoModelForCausalLM.from_pretrained(
-                    settings.model_id,
-                    revision=settings.revision,
-                    local_files_only=True,
-                    dtype=torch.float32,
-                ),
-            ).to(device)
-            if adapter is not None:
-                from peft import PeftModel
-
-                loaded = PeftModel.from_pretrained(
-                    loaded, str(adapter), local_files_only=True
-                )
-            loaded.eval()
-            model = loaded
-        inputs = tokenizer.apply_chat_template(
-            [{"role": "user", "content": prompt}],
-            add_generation_prompt=True,
-            return_tensors="pt",
-            return_dict=True,
-        ).to(model.device)
-        with torch.inference_mode():
-            output = model.generate(
-                **inputs,
-                max_new_tokens=settings.max_new_tokens,
-                do_sample=False,
-            )
-        return tokenizer.decode(
-            output[0, inputs["input_ids"].shape[1] :], skip_special_tokens=True
-        )
+        # A prior failed request may have kept cycles alive through its traceback.
+        gc.collect()
+        try:
+            return _generate_once(settings, adapter, prompt)
+        finally:
+            # Model objects can contain cycles. Collect before loading another
+            # condition so a full comparison cannot accumulate three models.
+            gc.collect()
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
 
     return generate
+
+
+def _generate_once(settings: ModelSettings, adapter: Path | None, prompt: str) -> str:
+    import torch
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+
+    torch.set_num_threads(1)
+    device = settings.device
+    if device == "auto":
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+    tokenizer = cast(
+        Any,
+        AutoTokenizer.from_pretrained(
+            settings.model_id,
+            revision=settings.revision,
+            local_files_only=True,
+        ),
+    )
+    model = cast(
+        Any,
+        AutoModelForCausalLM.from_pretrained(
+            settings.model_id,
+            revision=settings.revision,
+            local_files_only=True,
+            dtype=torch.float32,
+        ),
+    ).to(device)
+    if adapter is not None:
+        from peft import PeftModel
+
+        model = PeftModel.from_pretrained(model, str(adapter), local_files_only=True)
+    model.eval()
+    inputs = tokenizer.apply_chat_template(
+        [{"role": "user", "content": prompt}],
+        add_generation_prompt=True,
+        return_tensors="pt",
+        return_dict=True,
+    ).to(model.device)
+    with torch.inference_mode():
+        output = model.generate(
+            **inputs, max_new_tokens=settings.max_new_tokens, do_sample=False
+        )
+    return tokenizer.decode(
+        output[0, inputs["input_ids"].shape[1] :], skip_special_tokens=True
+    )

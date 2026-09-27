@@ -48,7 +48,7 @@ async function request(path, body) {
 function render(data) {
   document.querySelector('#mode').textContent = data.mode === 'offline'
     ? 'OFFLINE / 결정적 테스트 대역 · 실제 모델 추론이 아닙니다. 기반 조건만 테스트 응답을 표시합니다.'
-    : 'LIVE / 로컬 모델 추론 · 첫 요청은 모델 로딩으로 시간이 걸릴 수 있습니다.';
+    : 'LIVE / 로컬 모델 추론 · 요청마다 모델을 로드합니다. 네 조건 비교는 순차 실행 후 결과를 함께 표시합니다.';
   for (const view of mediaViews) view.dispose();
   mediaViews.length = 0;
   results.replaceChildren();
@@ -103,7 +103,7 @@ async function run(path, payload) {
   if (busy) return;
   errorBox.hidden = true;
   setBusy(true);
-  progress.textContent = '요청 처리 중… 모델 로딩과 추론을 기다려 주세요. 자동 재시도는 하지 않습니다.';
+  progress.textContent = '요청 처리 중… 네 조건 비교는 순차 실행하며, 모두 끝난 뒤 결과가 표시됩니다. 모델 로딩과 추론으로 1분 이상 걸릴 수 있습니다. 자동 재시도는 하지 않습니다.';
   try {
     render(await request(path, payload));
     progress.textContent = '완료. 조건별 원시 출력과 서버 처리를 확인하세요.';
