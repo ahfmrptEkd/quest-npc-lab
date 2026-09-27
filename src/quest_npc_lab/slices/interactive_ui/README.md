@@ -27,11 +27,17 @@ an inference API. If the cache is missing, the condition displays the load
 error. Provision that model/revision in the Hugging Face cache before using
 live mode. `--model-id` and `--revision` can select another cached compatible
 causal language model. The default device is CUDA when available, otherwise
-CPU; CPU generation can be slow. First use loads the model. Requests are
-serialized to protect model use and session state.
+CPU; CPU generation can be slow. Each generation loads and releases its model. Requests are
+serialized to protect model use and session state. A comparison runs all four
+conditions sequentially and returns their results together; there is no partial
+result streaming. See the root [demo limitations](../../../../README.md#데모-사용과-응답-시간의-한계)
+for a single-run timing observation and its measurement conditions.
 
+Live generation sets PyTorch CPU intra-op threads to one, matching the local
+evaluation setup and avoiding CPU oversubscription in the small WSL environment.
+This is a process-wide setting, including when embedding this generator.
 All live conditions use greedy decoding, float32 weights and the same
-`--max-new-tokens` (default 256). No automatic retry, JSON repair or output
+`--max-new-tokens` (default 128). No automatic retry, JSON repair or output
 substitution occurs. Raw output means the decoded generated text before
 parsing; tokenizer special tokens are omitted. Incomplete or invalid JSON
 remains visible alongside its parse error. Inference exceptions have no raw
@@ -41,10 +47,10 @@ output and leave that condition's state unchanged; other conditions still run.
 
 The cards show model/revision, adapter path, prompt identifier, mode, device
 selection and generation settings. `minimal-v1` uses the receptionist's
-existing default rules. `improved-ui-v1` adds the agreed intent/cancellation
-rules; this is a UI integration prompt, not a claim that the main-training
-prompt has been finalized or evaluated. All improved conditions use identical
-rules.
+existing default rules. `receptionist-improved-v1` uses the frozen intent/cancellation rules from
+`prompt_evaluation/prompt_manifest.json`, shared with final evaluation. All
+improved conditions use identical rules; the name does not imply a measured
+performance improvement.
 
 ```bash
 uv run python -m quest_npc_lab.slices.interactive_ui \
@@ -57,7 +63,8 @@ Each trained path must be a local PEFT adapter directory with
 compatible with the selected base model. Readiness means these files exist;
 load/compatibility errors are displayed on execution. A trained condition
 loads its own adapter over a separate base instance, never the unadapted
-base runner. Up to three model instances may occupy device memory. Restart
+base runner. Models are released after each generation instead of retaining up to three
+instances. This bounds retained model memory at the cost of repeated loading. Restart
 the server after adding/replacing checkpoints. Do not use the model-smoke
 slice's preparation checkpoints as main-experiment results.
 
