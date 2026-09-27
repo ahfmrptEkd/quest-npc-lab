@@ -2,6 +2,9 @@
 
 The completed DPO run did **not** improve this task. Preserve this negative
 result; no evaluation-driven tuning or checkpoint selection was performed.
+**Decision: do not adopt this DPO checkpoint for the demo.** Keep it as a
+comparison artifact. This decision concerns the tested configuration, not DPO
+in general. The interactive UI continues to expose the original four conditions.
 
 | Condition | Correct action / 60 | Strict JSON valid / 60 | Wrong grant / 50 non-grant cases |
 |---|---:|---:|---:|
